@@ -15,19 +15,24 @@
 @media(max-width:700px){body{font-size:14px}.wrap{padding-left:14px;padding-right:14px}.topbar .wrap{min-height:67px}.brandmark{width:36px;height:36px;font-size:20px}.brand strong{font-size:21px}.topmeta .small{display:none}.badge{font-size:10px;padding:3px 5px}.hero{padding-top:21px;padding-bottom:20px}.hero h1{font-size:23px}.hero p{font-size:13px}.workspace{display:flex;flex-direction:column;gap:18px}.workspace>.card{width:100%}.sidebar{box-shadow:3px 3px 0 var(--ink)}.job{padding:13px 15px}.job h2{font-size:17px;margin:3px 0}.job p{display:none}.side-section{padding:13px 15px}.question-nav{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.question-nav button{flex-direction:column;font-size:11px;min-height:99px;padding:8px;gap:4px}.question-nav button[aria-current="true"]{padding:7px}.qnum{font-size:10px}.qnav-copy small{font-size:10px}.goal-section{display:none}.stage-list{display:flex;justify-content:space-between;gap:4px}.stage-list li{flex-direction:column;gap:4px;font-size:10px;white-space:nowrap}.stage-list .stage-dot{width:20px;height:20px}.side-title{font-size:12px;margin-bottom:8px}.section-top{padding:13px 16px}.body,.question-content{padding:17px}.question-content h2{font-size:18px}.question-prompt{font-size:14px}.compare-grid{grid-template-columns:1fr}.feedback-body .dimensions{display:block}.dimension{margin-top:12px}.footer .wrap{flex-direction:column}.actions button{font-size:13px}.input-meta{font-size:11px}.stage-heading{font-size:18px}textarea{min-height:230px}.feedback-card{scroll-margin-top:12px}.toast{font-size:12px}.feedback-empty{padding:15px 7px}}
 @media(prefers-reduced-motion:no-preference){button{transition:background .12s}html{scroll-behavior:smooth}}
 @media print{.topmeta,.actions,.question-nav,.footer button,.helper-links{display:none}.workspace{display:block}.card{box-shadow:none;margin:15px 0;break-inside:avoid}.sidebar{display:none}.answer-box{max-height:none}.hero{padding:10px 0}.feedback-body .dimensions{display:block}}
+
+[hidden]{display:none!important}.mode-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;border:var(--line);border-radius:12px;background:#fff;padding:17px 20px;margin-bottom:19px;box-shadow:3px 3px 0 var(--ink)}.mode-copy p{font-size:13px;color:var(--muted);margin-top:4px}.mode-actions{display:flex;gap:10px;flex-shrink:0}.mode-actions button[aria-pressed="true"]{box-shadow:2px 2px 0 var(--ink)}.question-type-label{grid-column:1/-1;font-size:12px;color:#175eaf;margin:10px 0 0}.question-type-label:first-child{margin-top:0}.question-nav button{min-height:54px}.mock-workspace{display:grid;grid-template-columns:225px minmax(0,1fr);gap:19px;align-items:start;padding-bottom:28px}.mock-side .job h2{font-size:16px}.mock-progress{list-style:none;padding:0;margin:0;display:grid;gap:13px;font-size:13px}.mock-progress li{display:flex;align-items:center;gap:9px;color:var(--muted)}.mock-progress .current{color:#175eaf;font-weight:800}.mock-progress .current .stage-dot{background:var(--blue);color:#fff}.mock-progress .done .stage-dot{background:var(--pale)}.mock-clock{font-variant-numeric:tabular-nums;font-size:31px;font-weight:800;color:#175eaf;line-height:1.5}.mock-content{min-width:0}.mock-content .question-prompt{line-height:1.9}.mock-overall .score-number{margin:10px 0}.mock-result{border:1px solid #b6c9dc;border-radius:10px;margin-top:17px;padding:15px;background:#fff}.mock-result summary{font-size:15px;line-height:1.7}.mock-result .question-tag{margin-top:15px}.mock-result .answer-caption{margin-top:15px}.mock-result>button{margin-top:17px}.mock-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.mock-dimension-summary{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;font-size:13px}.mock-table th,.mock-table td{text-align:left;overflow-wrap:anywhere}.mock-table th:first-child{width:42%}.footer-actions{display:grid;gap:9px;flex-shrink:0}.mock-content textarea{min-height:280px}
+@media(max-width:700px){.mode-bar{flex-direction:column;align-items:stretch;gap:12px;padding:14px}.mode-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mode-actions button{padding:11px 7px;font-size:13px}.mock-workspace{display:flex;flex-direction:column;gap:17px}.mock-workspace>.card{width:100%}.mock-side .job{display:none}.mock-side .side-section{padding:13px}.mock-side .mock-progress{display:flex;justify-content:space-between;gap:5px;font-size:11px}.mock-side .mock-progress li{flex-direction:column;gap:5px}.mock-side .mock-clock{font-size:25px}.mock-side .side-section:nth-child(3){display:flex;flex-wrap:wrap;align-items:center;gap:9px}.mock-side .side-section:nth-child(3) .side-title{margin:0}.mock-side .side-section:nth-child(3) .small{width:100%}.mock-detail-grid,.mock-dimension-summary{grid-template-columns:1fr}.mock-result{padding:12px}.mock-table{table-layout:fixed;font-size:11px}.mock-table th,.mock-table td{padding:9px 3px}.mock-table th:first-child{width:38%}.mock-table th:nth-child(2){width:22%}.mock-table th:nth-child(3){width:18%}.footer-actions{width:100%}.footer-actions button{width:100%}.question-type-label{font-size:12px;margin-top:7px}.question-nav button{min-height:62px}.mock-content textarea{min-height:240px}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">跳到训练区域</a>
 <header class="topbar"><div class="wrap"><div class="brand"><div class="brandmark" aria-hidden="true">岸</div><div><strong>上岸</strong><small>把思路说清楚</small></div></div><div class="topmeta"><span class="small muted">INT6141 · 课程项目原型</span><span class="badge">规则练习评分 · 可离线</span></div></div></header>
-<div class="wrap hero"><div><div class="eyebrow">人力资源管理岗 · 公务员</div><h1>从“没有思路”，到有依据地修订回答。</h1><p>面向缺少岗位实践经验、准备中国内地公务员相关岗位面试的高校毕业生。通过就业服务、同事矛盾和求职动机情境，练习分析、沟通与岗位表达。</p></div><div class="hero-note">先独立作答，再看评分与整合建议。<br>反馈用于模拟练习，<strong>不等同于官方面试评价。</strong></div></div>
+<div class="wrap hero"><div><div class="eyebrow">人力资源管理岗 · 公务员</div><h1>先分项练习，再完整模拟。</h1><p>面向缺少岗位实践经验、准备中国内地公务员相关岗位面试的高校毕业生。通过五类六道模拟情境，练习分析、沟通与岗位表达；专项可以反复修改，综合模拟结束后统一反馈。</p></div><div class="hero-note">专项获得提示与修订建议；模拟独立作答、统一反馈。<br>反馈用于模拟练习，<strong>不等同于官方面试评价。</strong></div></div>
+<div class="wrap"><section class="mode-bar" aria-label="选择训练模式"><div class="mode-copy"><strong>选择你的练习方式</strong><p>专项训练：按五类题型练习，可获得提示并重复修改。<br>综合模拟：随机抽取三题，按顺序回答，结束后统一反馈。</p></div><div class="mode-actions"><button id="mode-practice" class="primary" type="button" aria-pressed="true">专项训练</button><button id="mode-mock" type="button" aria-pressed="false">进入综合模拟</button></div></section></div>
 <div class="wrap"><p id="announcement" class="toast" role="status" aria-live="polite"></p></div>
-<div class="wrap workspace">
-<aside class="card sidebar" aria-label="题目与训练阶段"><div class="job"><span class="badge">固定岗位</span><h2>人力资源管理岗 · 公务员</h2><p>以公共就业服务任务为练习场景；实际职责以招录公告为准。</p></div><div class="side-section"><div class="side-title">五个情境 · 每题独立记录</div><nav id="question-nav" class="question-nav" aria-label="选择训练情境"></nav></div><div class="side-section goal-section"><div class="side-title">本题训练目标</div><ul id="goal-list" class="goal-list"></ul></div><div class="side-section"><div class="side-title">当前阶段</div><ol id="stage-list" class="stage-list"></ol></div></aside>
-<main id="main" class="card" tabindex="-1"><div class="section-top"><h2 id="main-label">情境训练</h2><span id="progress" class="progress"></span></div><section id="question-content" class="question-content"></section><div id="training-content" class="body"></div></main>
+<div id="practice-workspace" class="wrap workspace">
+<aside class="card sidebar" aria-label="题目与训练阶段"><div class="job"><span class="badge">固定岗位</span><h2>人力资源管理岗 · 公务员</h2><p>以公共就业服务任务为练习场景；实际职责以招录公告为准。</p></div><div class="side-section"><div class="side-title">五类六题 · 每题独立记录</div><nav id="question-nav" class="question-nav" aria-label="选择训练情境"></nav></div><div class="side-section goal-section"><div class="side-title">本题训练目标</div><ul id="goal-list" class="goal-list"></ul></div><div class="side-section"><div class="side-title">当前阶段</div><ol id="stage-list" class="stage-list"></ol></div></aside>
+<main id="main" class="card" tabindex="-1"><div class="section-top"><h2 id="main-label">专项训练</h2><span id="progress" class="progress"></span></div><section id="question-content" class="question-content"></section><div id="training-content" class="body"></div></main>
 <aside id="feedback-panel" class="card feedback-card" aria-labelledby="feedback-heading"><div class="section-top"><h2 id="feedback-heading">有文本依据的反馈</h2><span id="feedback-version" class="badge">等待作答</span></div><div id="feedback-content" class="feedback-body"></div></aside>
 </div>
-<footer class="footer"><div class="wrap"><div><p>本原型不接入大语言模型，不生成真实面试成绩。规则检查可能漏判或误判，所有文字线索都需要人工核对；“未检测到”不表示没有相关能力。</p><p id="storage-status">记录仅保存在当前页面；请勿输入姓名、电话等个人信息。</p><details class="helper-links"><summary>了解使用范围与记录方式</summary><p>使用范围：岗位说明 → 首次作答 → 查看反馈 → 修改回答 → 两版对照与小结。五个情境为课程小组编写的模拟题，不是官方真题或标准答案。可在电脑或手机浏览器中输入文字，核心训练无需网络。</p><p>同一浏览器会尽可能在本机保存草稿和记录，清理浏览器数据、更换设备或部分隐私模式下可能丢失。可下载本机训练记录保留两版回答；下载文件包含你输入的文字，请自行妥善保管。输入不会由本网页上传，未使用统计、外部字体或公共API。</p></details></div><button id="clear-records" class="subtle">清空本机训练记录</button></div></footer>
+<div id="mock-workspace" class="wrap mock-workspace" hidden><aside id="mock-side" class="card mock-side" aria-label="综合模拟进度"></aside><main id="mock-main" class="card" tabindex="-1"><div class="section-top"><h2>综合模拟</h2><span id="mock-progress-text" class="progress"></span></div><div id="mock-content" class="body mock-content"></div></main></div>
+<footer class="footer"><div class="wrap"><div><p>本原型不接入大语言模型，不生成真实面试成绩。规则检查可能漏判或误判，所有文字线索都需要人工核对；“未检测到”不表示没有相关能力。</p><p id="storage-status">记录仅保存在当前页面；请勿输入姓名、电话等个人信息。</p><details class="helper-links"><summary>了解使用范围与记录方式</summary><p>专项流程：阅读目标 → 首次作答 → 查看反馈 → 修改回答 → 两版对照与小结。综合模拟：随机三题，逐题提交锁定，最后统一反馈。五类六道情境为课程小组编写的模拟题，不是官方真题或标准答案。可在电脑或手机浏览器中输入文字，核心训练无需网络。</p><p>同一浏览器会尽可能在本机保存草稿和记录，清理浏览器数据、更换设备或部分隐私模式下可能丢失。可下载本机训练记录保留两版回答；下载文件包含你输入的文字，请自行妥善保管。输入不会由本网页上传，未使用统计、外部字体或公共API。</p></details></div><div class="footer-actions"><button id="clear-records" class="subtle">清空专项记录</button><button id="clear-mock" class="subtle">清空综合模拟记录</button></div></div></footer>
 
 <!-- 内容编辑入口：只修改此 JSON。保持 id 唯一，四个维度 id 不变。terms 为文字线索，并非标准答案。 -->
 <script id="questions-config" type="application/json">
@@ -250,7 +255,8 @@
           "starter": "我负责……，由……确认……，交接时……；涉及个人信息时……。"
         }
       }
-    ]
+    ],
+    "typeId": "organization"
   },
   {
     "id": "onsite-complaint",
@@ -464,7 +470,8 @@
           "starter": "我负责……，由……确认……，交接时……；涉及个人信息时……。"
         }
       }
-    ]
+    ],
+    "typeId": "communication"
   },
   {
     "id": "plan-adjustment",
@@ -678,7 +685,8 @@
           "starter": "我负责……，由……确认……，交接时……；涉及个人信息时……。"
         }
       }
-    ]
+    ],
+    "typeId": "emergency"
   },
   {
     "id": "colleague-conflict",
@@ -887,7 +895,8 @@
           "starter": "我负责……，由……复核；如需协调，汇报……事实与……方案。"
         }
       }
-    ]
+    ],
+    "typeId": "communication"
   },
   {
     "id": "job-motivation",
@@ -1105,7 +1114,225 @@
           "starter": "在……中，我负责……，采取了……；为补足……，我计划每周……。"
         }
       }
-    ]
+    ],
+    "typeId": "motivation"
+  },
+  {
+    "id": "ai-job-analysis",
+    "title": "生成式AI辅助求职现象",
+    "category": "综合分析 · 社会现象",
+    "shortTitle": "AI辅助求职",
+    "prompt": "某就业服务活动中，部分毕业生希望利用生成式AI撰写简历和准备面试，认为这样能提高效率；也有人担心过度依赖会让表达雷同，甚至出现不符合真实经历的内容。作为新入职的公共就业服务工作人员，你如何看待这一现象？你会提出哪些服务建议？",
+    "goals": [
+      "结合情境分析技术带来的便利与风险",
+      "从毕业生需要出发提出具体服务建议",
+      "体现真实性、个人信息保护与服务边界意识"
+    ],
+    "guidance": [
+      "先想一个问题：毕业生使用AI准备求职，可能得到什么帮助，又可能遇到什么问题？",
+      "从“工具能帮助什么”和“哪些内容必须本人核实”各写一项，再说明原因。",
+      "如果你是就业服务工作人员，会怎样向毕业生说明使用方法，并给有需要的人提供帮助？"
+    ],
+    "contextTerms": [
+      "AI",
+      "人工智能",
+      "生成式",
+      "简历",
+      "求职",
+      "毕业生",
+      "面试",
+      "真实经历"
+    ],
+    "dimensions": [
+      {
+        "id": "clarity",
+        "label": "表达清晰度",
+        "checks": [
+          {
+            "id": "sequence",
+            "label": "按步骤组织表达",
+            "terms": [
+              "首先",
+              "第一步",
+              "先",
+              "其次",
+              "然后",
+              "接着",
+              "最后",
+              "分为"
+            ],
+            "suggestion": "用“先做什么—再做什么—最后如何检查”组织回答，并给每一步加上具体动作。",
+            "starter": "我会先……，再……，最后……。"
+          },
+          {
+            "id": "purpose",
+            "label": "交代行动目的或预期产出",
+            "terms": [
+              "为了",
+              "以便",
+              "确保",
+              "目的是",
+              "形成",
+              "汇总成",
+              "整理成"
+            ],
+            "suggestion": "补充每项安排的目的或产出，例如需要形成哪份清单，供谁使用。",
+            "starter": "为了解决……，这一步需要形成……，交给……使用。"
+          }
+        ],
+        "detail": {
+          "label": "具体展开线索",
+          "patterns": [
+            "首先|第一步|先|然后|其次|最后|为了|确保|形成"
+          ],
+          "minLength": 8,
+          "minEvidence": 2,
+          "suggestion": "把至少两个不同步骤写清楚，并说明其中一步的目的或产出；不要只排列顺序词。",
+          "starter": "先向……了解……，再由……处理……，这样可以……。"
+        }
+      },
+      {
+        "id": "analysis",
+        "label": "综合分析",
+        "checks": [
+          {
+            "id": "benefits",
+            "label": "说明工具价值及其原因",
+            "terms": [
+              "效率",
+              "节省时间",
+              "整理思路",
+              "梳理经历",
+              "辅助表达",
+              "帮助表达",
+              "提供思路"
+            ],
+            "suggestion": "说明AI可以帮助毕业生完成哪一项准备，以及为什么能提供帮助。",
+            "starter": "AI可以帮助……，因为……；需要本人补充或核实的是……。"
+          },
+          {
+            "id": "risks",
+            "label": "分析依赖、失真或隐私风险",
+            "terms": [
+              "风险",
+              "依赖",
+              "雷同",
+              "失真",
+              "虚假",
+              "编造",
+              "核实",
+              "隐私"
+            ],
+            "suggestion": "结合求职情境说明一种具体风险，并解释它怎样影响真实表达或信息安全。",
+            "starter": "如果直接照搬……，可能导致……，因此需要……。"
+          }
+        ],
+        "detail": {
+          "label": "具体展开线索",
+          "patterns": [
+            "因为|导致|核实.{1,16}(经历|内容|事实)|对照.{1,16}(经历|事实)|区分|人工核对|逐项核对"
+          ],
+          "minLength": 12,
+          "minEvidence": 1,
+          "suggestion": "补充一个因果解释，或说明如何把AI生成内容与本人真实经历逐项核对。",
+          "starter": "以……为例，如果……就可能……，我会通过……核对。"
+        }
+      },
+      {
+        "id": "people",
+        "label": "群众工作",
+        "checks": [
+          {
+            "id": "needs",
+            "label": "回应毕业生的具体需要",
+            "terms": [
+              "倾听",
+              "了解需求",
+              "毕业生需求",
+              "答疑",
+              "解释",
+              "回应"
+            ],
+            "suggestion": "说明怎样了解毕业生的困难，并用容易理解的话解释AI使用边界。",
+            "starter": "我会先向毕业生了解……，再解释……。"
+          },
+          {
+            "id": "support",
+            "label": "提供可获得的指导和后续支持",
+            "terms": [
+              "人工咨询",
+              "咨询",
+              "指导",
+              "指引",
+              "示例",
+              "培训",
+              "跟进",
+              "反馈渠道"
+            ],
+            "suggestion": "提供一项具体支持，例如真实经历梳理示例、人工咨询或使用指引。",
+            "starter": "针对……困难，我会提供……示例，并通过……跟进。"
+          }
+        ],
+        "detail": {
+          "label": "具体展开线索",
+          "patterns": [
+            "向.{1,12}(解释|告知|通知)|通过.{1,12}(反馈|通知|联系)|我会说|反馈渠道|处理进度|回访|服务指引|参与指引"
+          ],
+          "minLength": 12,
+          "minEvidence": 1,
+          "suggestion": "补充一句面对服务对象的具体说法，或明确通知渠道、反馈内容及后续联系安排。",
+          "starter": "我会向……说明：“目前已确认……，接下来……，如需了解进展可通过……联系。”"
+        }
+      },
+      {
+        "id": "role",
+        "label": "岗位匹配",
+        "checks": [
+          {
+            "id": "boundaries",
+            "label": "保护个人信息并坚持真实表达",
+            "terms": [
+              "个人信息",
+              "隐私",
+              "真实经历",
+              "真实性",
+              "授权",
+              "保密",
+              "不编造"
+            ],
+            "suggestion": "说明不上传哪些个人信息，以及如何坚持以真实经历为基础使用工具。",
+            "starter": "涉及……信息时我会……；AI生成的经历内容需要……。"
+          },
+          {
+            "id": "coordination",
+            "label": "明确服务分工与反馈安排",
+            "terms": [
+              "分工",
+              "协调",
+              "对接",
+              "负责人",
+              "责任人",
+              "请示",
+              "汇报",
+              "反馈记录"
+            ],
+            "suggestion": "说明由谁提供指导、怎样收集问题，并在职责范围内跟进。",
+            "starter": "我负责……，与……对接，把常见问题整理为……后跟进。"
+          }
+        ],
+        "detail": {
+          "label": "具体展开线索",
+          "patterns": [
+            "由.{1,12}负责|我负责.{2,}|向.{1,10}负责人.{1,12}(汇报|请示)|负责人.{1,12}(确认|同意)|保护个人信息|对.{1,12}(保密|授权)|按.{1,10}(流程|规定)"
+          ],
+          "minLength": 12,
+          "minEvidence": 1,
+          "suggestion": "明确谁负责、向谁请示、何时交接，或说明个人信息保护与承诺边界的具体做法。",
+          "starter": "我负责……，由……确认……，交接时……；涉及个人信息时……。"
+        }
+      }
+    ],
+    "typeId": "analysis"
   }
 ]
 </script>
@@ -1255,6 +1482,83 @@
   root.TrainingCore={analyze,compare,compareScores,createSession,migrateSession,transition};
 })(globalThis);
 </script>
+<script id="mock-engine">
+(function(root){
+  'use strict';
+  const types=[{id:'analysis',label:'综合分析'},{id:'communication',label:'人际沟通'},{id:'emergency',label:'应急应变'},{id:'organization',label:'组织管理'},{id:'motivation',label:'自我认知与岗位匹配'}];
+  const copy=value=>JSON.parse(JSON.stringify(value));
+  function shuffle(values,rng){const result=values.slice();for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.max(0,Math.min(0.999999999,rng()))*(i+1));[result[i],result[j]]=[result[j],result[i]];}return result;}
+  function createSession(questions,rng=Math.random){
+    const available=types.filter(t=>questions.some(q=>q.typeId===t.id));
+    if(available.length<3)throw new Error('综合模拟至少需要三个不同题型。');
+    const ids=shuffle(available,rng).slice(0,3).map(t=>{const pool=questions.filter(q=>q.typeId===t.id);return pool[Math.floor(Math.max(0,Math.min(0.999999999,rng()))*pool.length)].id;});
+    return {version:1,status:'active',ids:shuffle(ids,rng),index:0,entries:[],draft:'',elapsedMs:0,activeSince:null};
+  }
+  function elapsed(state,now){return Math.max(0,state.elapsedMs+(state.activeSince!==null?Math.max(0,now-state.activeSince):0));}
+  function transition(state,action,questions){
+    if(!state||state.status!=='active')return state;
+    const next=copy(state),now=Number.isFinite(action.now)?action.now:0;
+    if(action.type==='RESUME'){if(next.activeSince===null)next.activeSince=now;return next;}
+    if(action.type==='PAUSE'){next.elapsedMs=elapsed(next,now);next.activeSince=null;return next;}
+    if(action.index!==next.index)return state;
+    if(action.type==='DRAFT'){next.draft=String(action.text||'').slice(0,8000);return next;}
+    if(!['SUBMIT','SKIP'].includes(action.type))return state;
+    const text=String(action.text===undefined?next.draft:action.text).trim().slice(0,8000);
+    if(action.type==='SUBMIT'&&!text)return state;
+    if(action.type==='SKIP'&&next.draft.trim())return state;
+    if(!questions.some(q=>q.id===next.ids[next.index]))return state;
+    next.entries.push({id:next.ids[next.index],text:action.type==='SKIP'?'':text,skipped:action.type==='SKIP'});
+    next.elapsedMs=elapsed(next,now);next.activeSince=next.activeSince===null?null:now;
+    next.index++;next.draft='';
+    if(next.index===3){next.status='complete';next.activeSince=null;}
+    return next;
+  }
+  function restore(saved,questions){
+    if(!saved||saved.version!==1||!['active','complete'].includes(saved.status)||!Array.isArray(saved.ids)||saved.ids.length!==3||new Set(saved.ids).size!==3)return null;
+    const selected=saved.ids.map(id=>questions.find(q=>q.id===id));
+    if(selected.some(q=>!q)||new Set(selected.map(q=>q.typeId)).size!==3)return null;
+    if(!Number.isInteger(saved.index)||!Array.isArray(saved.entries)||saved.entries.length!==saved.index||saved.index<0||saved.index>3||typeof saved.draft!=='string'||saved.draft.length>8000||!Number.isFinite(saved.elapsedMs)||saved.elapsedMs<0)return null;
+    if((saved.status==='complete')!==(saved.index===3))return null;
+    if(saved.entries.some((e,i)=>!e||e.id!==saved.ids[i]||typeof e.text!=='string'||e.text.length>8000||typeof e.skipped!=='boolean'||(e.skipped?e.text!=='':!e.text.trim())))return null;
+    return {version:1,status:saved.status,ids:saved.ids.slice(),index:saved.index,entries:saved.entries.map(e=>({id:e.id,text:e.text,skipped:e.skipped})),draft:saved.status==='complete'?'':saved.draft,elapsedMs:saved.elapsedMs,activeSince:null};
+  }
+  function report(state,questions,analyze){
+    if(!state||state.status!=='complete'||state.entries.length!==3)return null;
+    const rows=state.entries.map((e,index)=>{
+      const q=questions.find(q=>q.id===e.id),feedback=e.skipped?null:analyze(e.text,q);
+      return {questionId:q.id,index:index+1,title:q.title,typeId:q.typeId,text:e.text,reason:e.skipped?'skipped':feedback.kind==='unsure'?'unsure':'answered',score:feedback?.assessment?.total||0,feedback};
+    });
+    const dimensionMeans=questions[0].dimensions.map(d=>({id:d.id,label:d.label,points:Math.round(rows.reduce((n,r)=>n+(r.feedback?.assessment?.dimensions.find(x=>x.id===d.id)?.points||0),0)/3*10)/10}));
+    const sorted=dimensionMeans.slice().sort((a,b)=>a.points-b.points||dimensionMeans.indexOf(a)-dimensionMeans.indexOf(b));
+    const priorities=[];
+    const incomplete=rows.find(r=>r.reason!=='answered');
+    if(incomplete)priorities.push({questionId:incomplete.questionId,index:incomplete.index,dimension:'完成实质作答',quote:'',action:'先回到本题题干，写清服务对象、需要处理的问题和你准备采取的一步行动，再进入专项训练补充具体做法。'});
+    for(const d of sorted){
+      if(d.points===25||priorities.length===3)continue;
+      const ordered=rows.filter(r=>r.feedback?.assessment).sort((a,b)=>(a.feedback.assessment.dimensions.find(x=>x.id===d.id).points)-(b.feedback.assessment.dimensions.find(x=>x.id===d.id).points)||a.index-b.index);
+      for(const row of ordered){
+        const q=questions.find(q=>q.id===row.questionId),config=q.dimensions.find(x=>x.id===d.id),found=row.feedback.dimensions.find(x=>x.id===d.id);
+        const p=row.feedback.assessment.priorities.find(x=>x.dimension===d.label);
+        const item={questionId:row.questionId,index:row.index,dimension:d.label,quote:p?.quote||found.hits[0]?.text||found.uncertain[0]?.text||row.text.slice(0,180),action:p?.action||found.missing[0]?.suggestion||config.detail.suggestion};
+        if(priorities.some(x=>x.questionId===item.questionId&&x.action===item.action))continue;
+        priorities.push(item);break;
+      }
+    }
+    const average=Math.round(rows.reduce((n,r)=>n+r.score,0)/3*10)/10,unscored=rows.filter(r=>r.reason!=='answered').length;
+    const gaps=sorted.filter(d=>d.points<25).slice(0,2).map(d=>d.label);
+    const overall=(unscored?'本轮有 '+unscored+' 题跳过或仅表达无思路，统计时按0分计入三题平均。':'本轮已提交三份回答。')+(gaps.length?'从预设文字线索看，优先关注'+gaps.join('、')+'，结合下面的具体题目补充说明。':'本轮配置的文字线索均已覆盖，仍需要人工核对内容是否合理、真实并符合岗位边界。')+'这不是官方面试成绩，也不能据此认定真实能力水平。';
+    return {average,rows,dimensions:dimensionMeans,priorities,overall,elapsedMs:state.elapsedMs};
+  }
+  function duration(ms){const seconds=Math.floor(ms/1000);return String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');}
+  function reportText(result,questions){
+    if(!result)return '';
+    const lines=['上岸 · 综合模拟报告','人力资源管理岗 · 公务员','规则辅助练习分，非官方面试成绩。','整场规则练习均分：'+result.average.toFixed(1)+' / 100','累计作答用时：'+duration(result.elapsedMs),'','整合评价：',result.overall,'','优先改善建议：',...result.priorities.map((p,i)=>(i+1)+'. 第'+p.index+'题 · '+p.dimension+'：'+p.action+(p.quote?'\n原句依据：'+p.quote:''))];
+    result.rows.forEach(r=>{const q=questions.find(q=>q.id===r.questionId);lines.push('','======== 第'+r.index+'题：'+q.title+' ========',q.category,q.prompt,'','原回答：',r.text||'未作答（跳过）','规则练习分：'+r.score+' / 100');if(r.reason!=='answered')lines.push('未作答或未形成实质回答，本轮统计按0分。');if(r.feedback?.assessment){lines.push('整合评价：'+r.feedback.assessment.overall);r.feedback.dimensions.forEach(d=>{lines.push(d.label+'：'+r.feedback.assessment.dimensions.find(x=>x.id===d.id).points+'/25');d.hits.forEach(h=>lines.push('原句依据：'+h.text));d.missing.forEach(m=>lines.push('改善建议：'+m.suggestion));});}});
+    return lines.join('\n');
+  }
+  root.TrainingTypes=types;root.MockCore={createSession,transition,restore,report,reportText,elapsed,duration};
+})(globalThis);
+</script>
 <script id="training-ui">
 (function(){
   'use strict';
@@ -1280,10 +1584,13 @@
   function current(){return {q:questions.find(q=>q.id===state.currentId),r:state.records[state.currentId]};}
   function renderSidebar(q,r){
     $('question-nav').replaceChildren();
-    questions.forEach((item,index)=>{
-      const rec=state.records[item.id];const b=button('',()=>dispatch({type:'OPEN',id:item.id},'已切换到第'+(index+1)+'题；每道题的记录分别保留。','main'));
-      b.setAttribute('aria-current',String(q.id===item.id));b.setAttribute('aria-label','第'+(index+1)+'题：'+item.title+'，'+stages.find(([id])=>id===rec.stage)[1]);
-      append(b,el('span','qnum',String(index+1).padStart(2,'0')),append(el('span','qnav-copy',item.shortTitle),el('small','',rec.stage==='intro'?'尚未开始':rec.stage==='summary'?'已有两版记录':'进行中')));$('question-nav').append(b);
+    globalThis.TrainingTypes.forEach(type=>{
+      $('question-nav').append(el('h3','question-type-label',type.label));
+      questions.filter(item=>item.typeId===type.id).forEach(item=>{
+        const rec=state.records[item.id],index=questions.indexOf(item);const b=button('',()=>dispatch({type:'OPEN',id:item.id},'已切换到'+item.title+'；每道题记录分别保留。','main'));
+        b.setAttribute('aria-current',String(q.id===item.id));b.setAttribute('aria-label',item.title+'，'+stages.find(([id])=>id===rec.stage)[1]);
+        b.append(append(el('span','qnav-copy',item.shortTitle),el('small','',rec.stage==='intro'?'尚未开始':rec.stage==='summary'?'已有两版记录':'进行中')));$('question-nav').append(b);
+      });
     });
     $('goal-list').replaceChildren(...q.goals.map(g=>el('li','',g)));
     const index=stages.findIndex(([id])=>id===r.stage);
@@ -1291,7 +1598,7 @@
       const li=el('li',i===index?'current':i<index?'done':'');if(i===index)li.setAttribute('aria-current','step');append(li,el('span','stage-dot',i<index?'✓':i+1),el('span','',label));return li;
     }));
     const finished=questions.filter(item=>state.records[item.id].stage==='summary').length;
-    $('progress').textContent='第 '+(questions.indexOf(q)+1)+' / '+questions.length+' 题 · 已有两版 '+finished+' / '+questions.length;
+    $('progress').textContent='专项练习 · 已有两版 '+finished+' / '+questions.length;
   }
   function renderQuestion(q){
     const area=$('question-content');area.replaceChildren(el('div','question-tag',q.category),el('h2','',q.title),el('p','question-prompt',q.prompt));
@@ -1400,9 +1707,112 @@
     questions.forEach((q,i)=>{const r=state.records[q.id],comparison=core.compareScores(r.initialFeedback,r.revisionFeedback);lines.push('======== 第'+(i+1)+'题：'+q.title+' ========',q.prompt,'','首次回答：',r.initial||'尚未提交。','', '首次反馈：',feedbackText(r.initialFeedback),'','修订回答：',r.revision||'尚未提交。','','修订反馈：',feedbackText(r.revisionFeedback),'','两次练习分对比：',comparison?comparison.initial+' → '+comparison.revision+'；变化 '+(comparison.delta>0?'+':'')+comparison.delta+' 分。仅为规则线索变化。':'尚未形成两份可计分回答。','','我的小结：',r.reflection||'未填写。','','未提交草稿：',r.stage==='initial'?r.initialDraft:r.stage==='revision'?r.revisionDraft:'无当前草稿。','');});
     const blob=new Blob(['\ufeff'+lines.join('\n')],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='上岸_本机训练记录.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);announce('已生成本机训练记录文字文件，请在浏览器下载列表中查看。');
   }
-  $('clear-records').addEventListener('click',()=>{if(window.confirm('清空本机全部 '+questions.length+' 个情境的回答、草稿与小结？如需保留，请先在小结页下载记录。')){clearTimeout(saveTimer);try{localStorage.removeItem(legacyStorageKey);}catch(error){}state=core.createSession(questions);save();render();announce('本机训练记录已清空。');}});
+  $('clear-records').addEventListener('click',()=>{if(window.confirm('只清空专项训练的全部 '+questions.length+' 个情境的回答、草稿与小结？如需保留，请先在小结页下载记录。')){clearTimeout(saveTimer);try{localStorage.removeItem(legacyStorageKey);}catch(error){}state=core.createSession(questions);save();render();announce('专项训练记录已清空，综合模拟记录不受影响。');}});
+  globalThis.PracticeUI={flush(){clearTimeout(saveTimer);save();},openQuestion(id){dispatch({type:'OPEN',id},'已打开专项训练。','main');},assessmentCard,renderDimension};
   window.addEventListener('pagehide',save);
   render();if(questions.some(q=>state.records[q.id].initialDraft||state.records[q.id].initial))announce('已保留并恢复本机回答，评分与反馈已按当前规则重新计算。');
+})();
+</script>
+<script id="mock-ui">
+(function(){
+  'use strict';
+  const questions=JSON.parse(document.getElementById('questions-config').textContent),core=globalThis.MockCore,practice=globalThis.PracticeUI,key='shangan-mock-v1';
+  const $=id=>document.getElementById(id);
+  function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=String(text);return n;}
+  function append(parent,...children){children.forEach(n=>{if(n)parent.append(n);});return parent;}
+  function button(text,handler,cls){const b=el('button',cls,text);b.type='button';b.addEventListener('click',handler);return b;}
+  function notice(text,cls){return el('p','notice'+(cls?' '+cls:''),text);}
+  function say(text){$('announcement').textContent=text;}
+  let mode='practice',mock=null,storageOk=true,reportCache=null,lastAdvance=-Infinity;
+  try{const raw=localStorage.getItem(key);if(raw){mock=core.restore(JSON.parse(raw),questions);if(!mock)say('上次模拟记录无法恢复，专项记录不受影响。可开始新一轮模拟。');}}
+  catch(error){say('模拟记录暂不可读取，专项训练仍可使用。');}
+  function persist(){
+    try{if(mock){const saved=mock.status==='active'?core.transition(mock,{type:'PAUSE',now:Date.now()},questions):mock;localStorage.setItem(key,JSON.stringify(saved));}else localStorage.removeItem(key);storageOk=true;}
+    catch(error){storageOk=false;}
+    const message=$('mock-storage-status');if(message)message.textContent=storageOk?'本轮仅保存在当前浏览器；只保留最近一轮。':'当前无法保存模拟记录，刷新可能丢失，请在完成后下载报告。';
+  }
+  function pause(){if(mock){mock=core.transition(mock,{type:'PAUSE',now:Date.now()},questions);persist();}}
+  function resume(){if(mock&&mode==='mock'&&!document.hidden){mock=core.transition(mock,{type:'RESUME',now:Date.now()},questions);persist();}}
+  function clock(){const n=$('mock-timer');if(n)n.textContent=core.duration(mock?core.elapsed(mock,Date.now()):0);}
+  function focusMain(){requestAnimationFrame(()=>{const n=$('mock-main');n.focus({preventScroll:true});n.scrollIntoView({block:'start'});});}
+  function setMode(next){
+    if(next===mode)return;
+    if(mode==='practice')practice.flush();else pause();
+    mode=next;reportCache=null;
+    try{sessionStorage.setItem('shangan-mode-v1',mode);}catch(error){/* 无法保存当前页签模式时，仍可手动切换。 */}
+    $('practice-workspace').hidden=mode!=='practice';$('mock-workspace').hidden=mode!=='mock';
+    $('mode-practice').setAttribute('aria-pressed',String(mode==='practice'));$('mode-mock').setAttribute('aria-pressed',String(mode==='mock'));
+    $('mode-practice').classList.toggle('primary',mode==='practice');$('mode-mock').classList.toggle('primary',mode==='mock');
+    document.querySelector('.skip').href=mode==='practice'?'#main':'#mock-main';
+    if(mode==='mock'){resume();render();say(mock?.status==='active'?'已恢复本轮模拟；提交后锁定，结束前不显示反馈。':'已进入综合模拟。');focusMain();}
+    else{say('已返回专项训练，原有记录均已保留。');requestAnimationFrame(()=>$('main').focus({preventScroll:true}));}
+  }
+  function start(){
+    if(mock&&mock.status==='complete'&&!window.confirm('开始新一轮将替换最近一次模拟记录。需要保留时，请先下载模拟报告。确定开始？'))return;
+    mock=core.createSession(questions);reportCache=null;resume();persist();render();say('本轮已抽取三个不同题型，开始第1题。');focusMain();
+  }
+  function submit(index,skip){
+    const advanceNow=performance.now();if(advanceNow-lastAdvance<450)return;
+    if(!mock||mock.status!=='active'||mock.index!==index)return;
+    const input=$('mock-answer'),text=input?input.value:mock.draft;
+    mock=core.transition(mock,{type:'DRAFT',index,text},questions);
+    if(!skip&&!text.trim()){say('请填写回答，或选择“跳过本题”。');input?.focus();return;}
+    const next=core.transition(mock,{type:skip?'SKIP':'SUBMIT',index,text,now:Date.now()},questions);
+    if(next===mock)return;
+    lastAdvance=advanceNow;mock=next;reportCache=null;persist();render();say(mock.status==='complete'?'三题均已完成，现在统一显示综合报告。':'本题已锁定，进入第'+(mock.index+1)+'题。');focusMain();
+  }
+  function sidebar(){
+    const area=$('mock-side');area.replaceChildren();
+    const job=el('div','job');append(job,el('span','badge','综合模拟'),el('h2','','人力资源管理岗 · 公务员'),el('p','','独立作答，结束后统一反馈。'));area.append(job);
+    const progress=el('div','side-section');append(progress,el('h3','side-title','本轮进度'));
+    const list=el('ol','mock-progress');for(let i=0;i<3;i++){const done=mock&&i<mock.index,current=mock?.status==='active'&&i===mock.index;const item=el('li',current?'current':done?'done':'');if(current)item.setAttribute('aria-current','step');append(item,el('span','stage-dot',done?'✓':i+1),el('span','','第'+(i+1)+'题 · '+(done?'已提交':current?'作答中':'待开始')));list.append(item);}progress.append(list);area.append(progress);
+    const timing=el('div','side-section');timing.append(el('h3','side-title','累计作答用时'));
+    const timer=el('p','mock-clock','00:00');timer.id='mock-timer';append(timing,timer,el('p','small muted','不限时；切换模式或页面进入后台时暂停。'));area.append(timing);
+    const storage=el('div','side-section');const msg=el('p','small muted');msg.id='mock-storage-status';storage.append(msg);area.append(storage);clock();
+  }
+  function introduction(area){
+    append(area,el('h2','stage-heading','综合模拟 · 三题一轮'),el('p','muted','从五类题型中随机抽取三个不同题型，每类抽一道，按顺序完成。'));
+    const rules=el('ul','instructions');['每题提交后锁定，结束前不返回修改，也不显示分数、提示或参考内容。','空白时可以明确选择跳过；没有思路也可以如实提交。','第三题结束后，统一查看整场练习分、整合评价和逐题建议。','这里只是课程项目的规则辅助模拟，不是官方考试或真实面试评估。'].forEach(t=>rules.append(el('li','',t)));area.append(rules);
+    if(mock?.status==='active'){append(area,notice('本轮已有 '+mock.entries.length+' / 3 题提交，抽题顺序和草稿已保留。'),button('继续本轮模拟',()=>{resume();render();focusMain();},'primary'));}
+    else area.append(button('开始本轮模拟',start,'primary'));
+  }
+  function editor(area){
+    const index=mock.index,q=questions.find(q=>q.id===mock.ids[index]);
+    append(area,el('div','question-tag','第 '+(index+1)+' / 3 题'),el('h2','stage-heading',q.title),el('p','question-prompt',q.prompt));
+    const label=el('label','answer-label','本题回答');label.htmlFor='mock-answer';const input=el('textarea');input.id='mock-answer';input.maxLength=8000;input.value=mock.draft;input.placeholder='请独立写出你的完整回答……';input.setAttribute('aria-describedby','mock-input-help');
+    const help=el('div','input-meta');help.id='mock-input-help';const count=el('span','',input.value.length+' / 8000 字符');append(help,el('span','','支持换行；Ctrl / ⌘ + Enter 提交'),count);
+    const actions=el('div','actions'),send=button(index===2?'提交最后一题 · 查看综合报告':'提交本题并继续',()=>submit(index,false),'primary'),skip=button('跳过本题',()=>submit(index,true),'subtle');skip.disabled=!!input.value.trim();
+    input.addEventListener('input',()=>{if(!mock||mock.status!=='active'||mock.index!==index)return;mock=core.transition(mock,{type:'DRAFT',index,text:input.value},questions);count.textContent=input.value.length+' / 8000 字符';skip.disabled=!!input.value.trim();persist();});
+    input.addEventListener('keydown',event=>{if(event.isComposing)return;if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();submit(index,false);}});
+    append(actions,send,skip);append(area,label,input,help,el('p','small muted','提交后本题锁定。草稿会自动保存；本轮全部结束后再查看反馈。'),actions);
+  }
+  function download(){
+    if(!reportCache)return;
+    const blob=new Blob(['\ufeff'+core.reportText(reportCache,questions)],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='上岸_综合模拟报告.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);say('模拟报告已生成，请在下载列表中查看。');
+  }
+  function report(area){
+    reportCache=core.report(mock,questions,globalThis.TrainingCore.analyze);const r=reportCache;
+    append(area,el('h2','stage-heading','综合模拟报告'),notice('三题已全部结束。以下为规则辅助练习反馈，需要人工核对，不等同于官方面试成绩。'));
+    const score=el('section','assessment mock-overall');append(score,el('h3','','整场规则练习均分'),el('div','score-number',r.average.toFixed(1)+' / 100'),el('p','small muted','三题得分相加后除以3。跳过或仅无思路的题目，本轮统计按0分。'),el('h3','priority-heading','整合评价'),el('p','overall',r.overall));
+    const list=el('ol','priority-list');r.priorities.forEach(p=>{const item=el('li');append(item,el('h4','','第'+p.index+'题 · '+p.dimension),el('p','',p.action));if(p.quote)append(item,el('p','small muted','对应回答片段（请结合题干核对）'),el('blockquote','quote',p.quote));list.append(item);});if(r.priorities.length)append(score,el('h3','priority-heading','优先改善建议'),list);area.append(score);
+    const table=el('table','score-table mock-table');table.setAttribute('aria-label','三题成绩概览');const head=el('thead'),hr=el('tr');['题目','题型','练习分','状态'].forEach(t=>hr.append(el('th','',t)));head.append(hr);const body=el('tbody');r.rows.forEach(row=>{const tr=el('tr');[row.index+'. '+row.title,globalThis.TrainingTypes.find(t=>t.id===row.typeId).label,row.score+' / 100',row.reason==='skipped'?'跳过 · 统计0分':row.reason==='unsure'?'无思路 · 统计0分':'已作答'].forEach(t=>tr.append(el('td','',t)));body.append(tr);});append(table,head,body);area.append(table);
+    const dims=el('div','mock-dimension-summary');r.dimensions.forEach(d=>dims.append(el('p','',d.label+'：平均 '+d.points.toFixed(1)+' / 25')));append(area,el('h3','priority-heading','四维练习分概览'),dims);
+    r.rows.forEach(row=>{
+      const q=questions.find(q=>q.id===row.questionId),details=el('details','mock-result');details.append(el('summary','','第'+row.index+'题 · '+q.title+' · '+row.score+' / 100'));
+      append(details,el('p','question-tag',q.category),el('p','question-prompt',q.prompt),el('p','answer-caption','本轮原回答'),el('div','answer-box',row.text||'未作答（跳过）'));
+      if(row.feedback?.assessment){details.append(practice.assessmentCard(row.feedback,'本题回答',false));const grid=el('div','mock-detail-grid');row.feedback.dimensions.forEach(d=>grid.append(practice.renderDimension(d,row.feedback.assessment.dimensions.find(s=>s.id===d.id))));details.append(grid);}
+      else append(details,notice('本题未作答或未形成可计分的实质回答，本轮统计按0分。未生成虚构原句或肯定评价。','warm'),el('p','small',row.feedback?.guidance||'可以在专项训练中先理解题意，再尝试写出一步具体行动。'));
+      details.append(button('去专项练习本题',()=>{setMode('practice');practice.openQuestion(q.id);say('已进入本题专项训练；保留原有专项记录，没有用模拟回答覆盖。');$('main').scrollIntoView({block:'start'});},'subtle'));area.append(details);
+    });
+    const actions=el('div','actions');append(actions,button('下载模拟报告',download,'primary'),button('开始新一轮模拟',start));area.append(actions);
+  }
+  function render(){sidebar();const area=$('mock-content');area.replaceChildren();$('mock-progress-text').textContent=mock?(mock.status==='complete'?'本轮已完成 · 3 / 3':'第 '+(mock.index+1)+' / 3 题'):'尚未开始';if(!mock)introduction(area);else if(mock.status==='active')editor(area);else report(area);persist();clock();}
+  $('mode-practice').addEventListener('click',()=>setMode('practice'));$('mode-mock').addEventListener('click',()=>setMode('mock'));
+  $('clear-mock').addEventListener('click',()=>{if(!mock){say('当前没有模拟记录可清空。');return;}if(window.confirm('只清空最近一轮综合模拟的回答、草稿与报告？专项记录不会被清空。需要保留时请先下载模拟报告。')){mock=null;reportCache=null;persist();if(mode==='mock')render();say('综合模拟记录已清空，专项记录已保留。');}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();else resume();clock();});
+  window.addEventListener('pagehide',()=>{pause();practice.flush();});window.addEventListener('pageshow',()=>{resume();clock();});
+  setInterval(()=>{if(mode==='mock'&&mock?.status==='active'&&!document.hidden){clock();persist();}},1000);
+  try{if(sessionStorage.getItem('shangan-mode-v1')==='mock')setMode('mock');}catch(error){/* 首次访问默认专项训练。 */}
 })();
 </script>
 </body>
