@@ -31,6 +31,9 @@
 
 /* Scene v2: local SVG, recording versions and evidence-based feedback. */
 .scene-room-v2{display:block!important;padding:18px!important;background:linear-gradient(150deg,#f2f8ff,#e5eeff)!important;border:1px solid #d3e2ff;text-align:center}.scene-room-v2 svg,#scene-content>svg{display:block;width:min(100%,620px);height:auto;margin:0 auto 14px}.scene-room-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.scene-room-kicker{font-weight:800;color:#3159ad}.scene-room-status{border-radius:99px;background:#fff;padding:8px 14px;color:#3159ad;font-size:13px;font-weight:700}.scene-room-status[data-state="speaking"]{background:#fff0b7;color:#705615}.scene-room-status[data-state="recording"]{background:#ffe0d6;color:#a3442b}.scene-room-status[data-state="review"]{background:#d7f1e3;color:#23734b}.scene-room-v2 .actions{justify-content:center;margin-top:12px}.scene-flow{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:12px 0 20px;list-style:none;counter-reset:scene-step}.scene-flow li{counter-increment:scene-step;border-radius:99px;background:#edf3fd;color:#587096;padding:8px 11px;font-size:12px}.scene-flow li:before{content:counter(scene-step) " · "}.scene-flow li.active{background:#315fd6;color:white}.scene-version-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.scene-version-card,.scene-report-attempt{min-width:0;border:1px solid #dce6f7;border-radius:16px;padding:16px;background:#fff}.scene-version-card audio,.scene-report-attempt audio{width:100%;max-width:100%}.scene-comparison{border:1px solid #cbdcf7;background:#f6f9ff;border-radius:20px;padding:20px;margin:24px 0}.scene-first-review,.scene-dimension-details{padding:14px;border:1px solid #dce6f7;border-radius:14px;margin:14px 0;background:#fff}.scene-first-review summary,.scene-dimension-details summary{font-weight:700;cursor:pointer;line-height:1.6}.scene-first-review[open]>:not(summary){margin-top:16px}.scene-score-pair{font-size:22px;font-weight:800;color:#315fd6;line-height:1.7}.scene-report-attempt{margin:16px 0}.scene-workspace .assessment{margin:20px 0}.scene-workspace .answer-box{white-space:pre-wrap;overflow-wrap:anywhere}.scene-workspace .actions button{min-height:44px}.scene-workspace .score-table{width:100%;table-layout:fixed}.scene-workspace .score-table th,.scene-workspace .score-table td{overflow-wrap:anywhere}.scene-comparison .quote{overflow-wrap:anywhere}.scene-room-status{transition:background .2s,color .2s}@media(max-width:600px){.scene-version-grid{grid-template-columns:1fr}.scene-room-v2{padding:12px!important}.scene-flow{gap:6px}.scene-flow li{font-size:11px;padding:7px 9px}.scene-comparison{padding:13px}.scene-room-caption{justify-content:center}.scene-room-v2 .actions{flex-wrap:wrap}.scene-room-v2 .actions button{flex:1;min-width:100px}.scene-workspace .score-table th,.scene-workspace .score-table td{font-size:11px;padding:8px 4px}.scene-score-pair{font-size:19px}.scene-workspace .body{min-width:0}}@media(prefers-reduced-motion:reduce){.scene-room-status{transition:none}}
+
+/* Optional local video practice; only the live preview is mirrored. */
+.scene-capture-choices{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 18px}.scene-capture-choices button{min-height:44px;background:#f2f6ff;border:1px solid #c8d8f5}.scene-capture-choices button[aria-pressed="true"]{background:#315fd6;color:#fff;border-color:#315fd6}.scene-camera-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:stretch}.scene-camera-panel{min-width:0;background:#f6f9ff;border:1px solid #d7e2f7;border-radius:18px;padding:18px}.scene-camera-panel h3{margin-bottom:12px}.scene-camera-preview{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#162840;border-radius:13px;transform:scaleX(-1)}.scene-camera-status{margin:12px 0 8px;font-size:13px;font-weight:750;color:#3159ad}.scene-camera-panel .actions{margin-top:12px}.scene-recorded-video{display:block;width:100%;max-height:420px;aspect-ratio:4/3;object-fit:contain;background:#14253b;border-radius:12px;transform:none}.scene-version-card video,.scene-report-attempt video{max-width:100%}.scene-camera-layout .scene-room-v2{margin:0}.scene-camera-layout .scene-room-v2 svg{margin-top:10px}.scene-camera-layout .actions button{min-width:0;overflow-wrap:anywhere}.scene-camera-layout .scene-room-caption{justify-content:center}@media(max-width:760px){.scene-camera-layout{grid-template-columns:1fr}.scene-camera-panel{padding:14px}.scene-camera-panel .actions button{flex:1}.scene-recorded-video{max-height:330px}.scene-capture-choices button{flex:1}}
 </style>
 <style id="playful-theme">
 /* 上岸 · 轻快练习室。仅视觉样式，保留原有训练逻辑。 */
@@ -1988,7 +1991,7 @@ textarea::placeholder{color:#6c7b93}
   function validStats(s){
     return s===null||(s&&['sampledMs','activeMs','lowMs','peakRms'].every(k=>Number.isFinite(s[k])&&s[k]>=0)&&Array.isArray(s.pauses)&&s.pauses.length<=1000&&s.pauses.every(p=>Number.isFinite(p.startMs)&&Number.isFinite(p.endMs)&&p.startMs>=0&&p.endMs>p.startMs));
   }
-  function validTake(t){return t===null||(t&&typeof t.id==='string'&&/^[\w-]{1,180}$/.test(t.id)&&Number.isFinite(t.durationMs)&&t.durationMs>0&&t.durationMs<=660000&&validStats(t.stats));}
+  function validTake(t){return t===null||(t&&typeof t.id==='string'&&/^[\w-]{1,180}$/.test(t.id)&&Number.isFinite(t.durationMs)&&t.durationMs>0&&t.durationMs<=660000&&validStats(t.stats)&&(t.kind===undefined||['audio','video'].includes(t.kind))&&(t.mimeType===undefined||(typeof t.mimeType==='string'&&t.mimeType.length<=120&&new RegExp('^'+(t.kind==='video'?'video':'audio')+'/[a-z0-9.+-]+(?:;.*)?$','i').test(t.mimeType)))&&(t.kind!=='video'||!!t.mimeType));}
   function validAttempt(a){return a&&typeof a.transcript==='string'&&a.transcript.length<=8000&&typeof a.confirmed==='boolean'&&typeof a.reviewed==='boolean'&&(!a.confirmed||!!a.transcript.trim())&&validTake(a.take);}
   function restore(s,questions){
     if(!s||![1,2].includes(s.version)||typeof s.sessionId!=='string'||!/^oral-[\w-]{1,100}$/.test(s.sessionId)||!Array.isArray(s.ids)||s.ids.length!==3||new Set(s.ids).size!==3||!s.records)return null;
@@ -2049,7 +2052,7 @@ textarea::placeholder{color:#6c7b93}
     state.ids.forEach((id,i)=>{const q=questions.find(q=>q.id===id),r=state.records[id];
       lines.push('\n第'+(i+1)+'题：'+q.title,q.prompt,r.skipped?'状态：跳过':'状态：'+(i<state.index?'已完成':'当前/待完成'));
       for(const [version,label] of [['initial','首次回答'],['revision','修订回答']]){const a=r[version],f=feedback(a,q,analyze);
-        lines.push('\n'+label,'录音时长：'+(a.take?(a.take.durationMs/1000).toFixed(1)+'秒':'无'),'核对文字：'+(a.confirmed?'已确认':'未确认'),a.transcript||'尚无文字');
+        lines.push('\n'+label,'媒体类型：'+(a.take?.kind==='video'?'视频':'音频'),'录音时长：'+(a.take?(a.take.durationMs/1000).toFixed(1)+'秒':'无'),'核对文字：'+(a.confirmed?'已确认':'未确认'),a.transcript||'尚无文字');
         if(f.assessment)lines.push('规则辅助练习分：'+f.assessment.total+' / 100',...f.assessment.dimensions.map(d=>d.label+'：'+d.points+' / 25'));
         else lines.push('尚无可计分的回答。');
         lines.push('整合评价：'+f.logic.overall,...f.logic.quotes.map(q=>'原句：'+q),...f.logic.suggestions.map(p=>p.label+'：'+p.action),'流利性提示：'+f.fluency.overall,...f.fluency.suggestions,f.method);
@@ -2068,28 +2071,50 @@ textarea::placeholder{color:#6c7b93}
 <script id="scene-capture">
 (function(root){
   'use strict';
+  class CameraPreview{
+    constructor(env=root){this.env=env;this.status='idle';this.stream=null;this.generation=0;}
+    async open(options={}){
+      if(this.status==='preview')return this.stream;
+      if(this.status==='requesting')throw new Error('正在等待摄像头授权，可以先取消。');
+      if(!this.env.navigator?.mediaDevices?.getUserMedia)throw new Error('当前环境无法使用摄像头，请打开HTTPS网页或使用仅录音。');
+      const generation=++this.generation;this.status='requesting';
+      try{const stream=await this.env.navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:'user'},width:{ideal:640},height:{ideal:480},frameRate:{ideal:15,max:24}}});
+        if(generation!==this.generation){stream.getTracks().forEach(t=>t.stop());return null;}
+        if(!stream.getVideoTracks().some(t=>t.readyState!=='ended')){stream.getTracks().forEach(t=>t.stop());throw new Error('没有取得可用的摄像头画面，请切换为仅录音。');}
+        this.stream=stream;this.status='preview';stream.getVideoTracks().forEach(t=>t.onended=()=>{this.close();options.onEnded?.();});return stream;
+      }catch(error){if(generation!==this.generation)return null;this.status='idle';this.stream=null;throw error;}
+    }
+    close(){this.generation++;this.stream?.getTracks().forEach(t=>{t.onended=null;t.stop();});this.stream=null;this.status='idle';}
+  }
   class SpeechCapture{
     constructor(env=root){this.env=env;this.status='idle';this.stream=null;this.cancelled=false;this.parts=[];this.samples=[];this.text='';this.error='';this.recognitionEnded=true;}
     async start(options={}){
       const e=this.env;this.options=options;
       if(this.status!=='idle')throw new Error('当前录音尚未结束。');
-      if(!e.navigator?.mediaDevices?.getUserMedia||!e.MediaRecorder)throw new Error('当前浏览器不支持网页录音。请使用最新版 Safari、Chrome 或 Edge 打开 HTTPS 网页。');
-      this.status='requesting';
+      this.cameraStream=options.video?options.previewStream:null;this.status='requesting';
       try{
+        if(!e.navigator?.mediaDevices?.getUserMedia||!e.MediaRecorder)throw new Error('当前浏览器不支持录制，请使用支持录制的浏览器或文字练习。');
+        if(options.video&&(!this.cameraStream?.getVideoTracks().some(t=>t.readyState!=='ended')||!e.MediaStream))throw new Error('请先开启可用摄像头，或切换为仅录音。');
+        const candidates=options.video?['video/webm;codecs=vp8,opus','video/mp4','video/webm']:['audio/webm;codecs=opus','audio/mp4','audio/webm','audio/ogg;codecs=opus'];
+        const mime=candidates.find(t=>e.MediaRecorder.isTypeSupported?.(t));
+        if(options.video&&e.MediaRecorder.isTypeSupported&&!mime)throw new Error('当前浏览器不支持视频录制格式，请切换为仅录音。');
         const stream=await e.navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true},video:false});
         if(this.cancelled){stream.getTracks().forEach(t=>t.stop());this.status='idle';return false;}
-        this.stream=stream;
-        const mime=['audio/webm;codecs=opus','audio/mp4','audio/webm','audio/ogg;codecs=opus'].find(t=>e.MediaRecorder.isTypeSupported?.(t));
-        this.recorder=new e.MediaRecorder(stream,mime?{mimeType:mime}:undefined);
+        this.audioStream=stream;
+        if(options.video&&!this.cameraStream.getVideoTracks().some(t=>t.readyState!=='ended'))throw new Error('摄像头在麦克风授权期间已断开，已取消录像。');
+        if(options.video&&!stream.getAudioTracks().length)throw new Error('未取得麦克风音轨，不能录制带声视频。');
+        this.stream=options.video?new e.MediaStream([...this.cameraStream.getVideoTracks(),...stream.getAudioTracks()]):stream;
+        this.recorder=new e.MediaRecorder(this.stream,options.video?{...(mime?{mimeType:mime}:{}),videoBitsPerSecond:600000,audioBitsPerSecond:64000}:mime?{mimeType:mime}:undefined);
+        if(options.video&&!/^video\//i.test(this.recorder.mimeType||''))throw new Error('浏览器未能创建带视频的录制，请切换为仅录音。');
         this.recorder.ondataavailable=event=>{if(event.data?.size)this.parts.push(event.data);};
         this.recorder.onerror=()=>{this.error='录音设备发生错误，已尝试保留可用片段。';this.stop();};
         this.recorder.onstop=()=>{if(this.status==='recording')this.stop();this.recordingStopped=true;this.maybeFinish();};
-        stream.getTracks().forEach(t=>t.onended=()=>{this.error='麦克风连接中断，已停止录音。';this.stop();});
+        this.stream.getTracks().forEach(t=>t.onended=()=>{this.error=options.video?'摄像头或麦克风连接中断，已停止录制。':'麦克风连接中断，已停止录音。';this.stop();});
         const AC=e.AudioContext||e.webkitAudioContext;
         if(AC)try{
           this.context=new AC();this.context.resume().catch(()=>this.options.onNotice?.('设备暂未允许音量取样，仍可录音与回放。'));
           if(this.cancelled){this.cleanup();this.status='idle';return false;}
-          this.source=this.context.createMediaStreamSource(stream);this.analyser=this.context.createAnalyser();this.analyser.fftSize=2048;this.source.connect(this.analyser);this.buffer=new Float32Array(2048);
+          this.source=this.context.createMediaStreamSource(this.stream);this.analyser=this.context.createAnalyser();this.analyser.fftSize=2048;this.source.connect(this.analyser);this.buffer=new Float32Array(2048);
         }catch(error){this.options.onNotice?.('音量取样不可用，仍可录音、回放和下载。');}
         if(this.cancelled){this.cleanup();this.status='idle';return false;}
         this.started=e.performance.now();this.status='recording';this.recorder.start(500);
@@ -2115,7 +2140,7 @@ textarea::placeholder{color:#6c7b93}
       }catch(error){this.recognitionEnded=true;this.options.onNotice?.('自动转写暂不可用，录音不受影响。');}
     }
     stop(){
-      if(this.status==='requesting'){this.cancelled=true;return Promise.resolve(null);}
+      if(this.status==='requesting'){this.cancelled=true;this.cleanup();return Promise.resolve(null);}
       if(this.status==='stopping')return this.stopped;
       if(this.status!=='recording')return Promise.resolve(null);
       this.status='stopping';this.durationMs=Math.max(1,this.env.performance.now()-this.started);
@@ -2125,7 +2150,7 @@ textarea::placeholder{color:#6c7b93}
       this.stopTimer=this.env.setTimeout(()=>{if(this.finished)return;this.error=this.error||'设备未及时返回录音结束事件，已保留收到的片段，请回听核对。';this.recordingStopped=true;this.maybeFinish();},2500);
       try{if(this.recorder.state!=='inactive')this.recorder.stop();}catch(error){this.error='停止录音时发生异常，已尝试保留收到的片段。';}
       // Stop tracks even if a faulty browser delays the recorder's final event.
-      this.stream?.getTracks().forEach(t=>{t.onended=null;t.stop();});
+      for(const stream of new Set([this.stream,this.audioStream,this.cameraStream]))stream?.getTracks().forEach(t=>{t.onended=null;t.stop();});
       return this.stopped;
     }
     maybeFinish(){
@@ -2137,19 +2162,19 @@ textarea::placeholder{color:#6c7b93}
     finish(){
       if(this.finished)return;this.finished=true;
       const blob=new this.env.Blob(this.parts,{type:this.recorder?.mimeType||this.parts[0]?.type||'audio/webm'});
-      const result={blob,durationMs:this.durationMs||Math.max(1,this.env.performance.now()-this.started),samples:this.samples,transcript:this.text,error:this.error};
+      const result={blob,kind:this.options.video?'video':'audio',mimeType:blob.type,durationMs:this.durationMs||Math.max(1,this.env.performance.now()-this.started),samples:this.samples,transcript:this.text,error:this.error};
       this.cleanup();this.status='idle';this.resolveStop?.(result);this.options.onFinish?.(result);
     }
     cleanup(){
       this.env.clearInterval(this.interval);
       this.env.clearTimeout(this.stopTimer);this.env.clearTimeout(this.recognitionTimer);
       if(this.recognition){this.recognition.onend=null;this.recognition.onerror=null;this.recognition.onresult=null;try{this.recognition.abort();}catch(error){}}
-      this.stream?.getTracks().forEach(t=>{t.onended=null;t.stop();});
+      for(const stream of new Set([this.stream,this.audioStream,this.cameraStream]))stream?.getTracks().forEach(t=>{t.onended=null;t.stop();});
       try{this.source?.disconnect();this.analyser?.disconnect();}catch(error){}
       if(this.context)try{this.context.close().catch(()=>{});}catch(error){}
     }
   }
-  root.SpeechCapture=SpeechCapture;
+  root.SpeechCapture=SpeechCapture;root.CameraPreview=CameraPreview;
 })(globalThis);
 
 </script>
@@ -2307,13 +2332,13 @@ textarea::placeholder{color:#6c7b93}
   const button=(label,fn,cls='')=>{const b=el('button',cls,label);b.type='button';b.addEventListener('click',fn);return b;};
   const note=(text,warm=false)=>el('p','notice'+(warm?' warm':''),text);
   const format=ms=>globalThis.MockCore.duration(ms),active=()=>globalThis.TrainingModes.get()==='scene',label=v=>v==='initial'?'首次回答':'修订回答';
-  let state=null,storageOk=true,migrating=false,invalidSaved=false,capture=null,busy=false,speaking=false,autoTranscribe=false,utterance=null,urls=[],renderId=0,lastNext=-Infinity;
-  const audioMemory=new Map(),players=new Map();let dbPromise=null,playerSerial=0;
+  let state=null,storageOk=true,migrating=false,invalidSaved=false,capture=null,busy=false,speaking=false,autoTranscribe=false,utterance=null,urls=[],renderId=0,lastNext=-Infinity,captureMode='audio',cameraError='',modeRequest=0,finishPromise=Promise.resolve();
+  const camera=new globalThis.CameraPreview(),audioMemory=new Map(),players=new Map();let dbPromise=null,playerSerial=0;
   try{const saved=localStorage.getItem(key),legacy=saved===null?localStorage.getItem(legacyKey):null;if(saved||legacy){state=core.restore(JSON.parse(saved||legacy),questions);migrating=!saved&&!!state;invalidSaved=!state;}}catch(error){storageOk=false;invalidSaved=true;}
   const current=()=>{const r=state.records[state.ids[state.index]];return {r,a:r[r.activeVersion],version:r.activeVersion,q:questions.find(q=>q.id===state.ids[state.index])};};
   function say(text){$('announcement').textContent=text;}
   function message(text,warm=false){const area=$('scene-message');if(area){area.textContent=text;area.className='notice'+(warm?' warm':'');}say(text);}
-  function save(){try{if(state){const text=JSON.stringify(state);localStorage.setItem(key,text);if(localStorage.getItem(key)!==text)throw new Error('保存未完成');if(migrating){localStorage.removeItem(legacyKey);migrating=false;}}else if(!invalidSaved){localStorage.removeItem(key);localStorage.removeItem(legacyKey);}storageOk=true;}catch(error){storageOk=false;}const n=$('scene-storage');if(n)n.textContent=storageOk?'最近一轮两版文字和录音保存在本浏览器。请及时下载，清理浏览器或隐私模式可能丢失。':'本机保存不可用，刷新可能丢失。旧记录不会因迁移失败而删除；请下载录音及回顾。';}
+  function save(){try{if(state){const text=JSON.stringify(state);localStorage.setItem(key,text);if(localStorage.getItem(key)!==text)throw new Error('保存未完成');if(migrating){localStorage.removeItem(legacyKey);migrating=false;}}else if(!invalidSaved){localStorage.removeItem(key);localStorage.removeItem(legacyKey);}storageOk=true;}catch(error){storageOk=false;}const n=$('scene-storage');if(n)n.textContent=storageOk?'最近一轮两版文字及音视频保存在本浏览器。请及时下载，清理浏览器或隐私模式可能丢失。':'本机保存不可用，刷新可能丢失。旧记录不会因迁移失败而删除；请下载作答媒体及回顾。';}
   function dispatch(action){if(!state)return;globalThis.AiUI.cancelPending();const version=state.status==='active'?current().version:undefined;state=core.transition(state,{...action,index:state.index,version:action.version||version},questions);save();}
   function db(){if(!dbPromise)dbPromise=new Promise((resolve,reject)=>{if(!globalThis.indexedDB){reject(new Error('当前浏览器无法保存音频'));return;}const request=indexedDB.open('shangan-oral-audio',1);request.onupgradeneeded=()=>request.result.createObjectStore('takes');request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);request.onblocked=()=>reject(new Error('本机音频存储被占用'));});return dbPromise;}
   async function audioOp(mode,id,value){const d=await db();return new Promise((resolve,reject)=>{const tx=d.transaction('takes',mode==='get'?'readonly':'readwrite'),store=tx.objectStore('takes');let req;if(mode==='put')req=store.put(value,id);else if(mode==='get')req=store.get(id);else req=store.delete(id);tx.oncomplete=()=>resolve(req.result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('保存中断'));});}
@@ -2335,17 +2360,47 @@ textarea::placeholder{color:#6c7b93}
   function revokeUrls(){releasePlayers();urls=[];}
   function stopPlayback(){for(const player of players.keys())player.pause();}
   function stopSpeaking(){speaking=false;if(globalThis.speechSynthesis)speechSynthesis.cancel();utterance=null;updateControls();}
+  function cameraLive(){return camera.status==='preview'&&camera.stream?.getVideoTracks().some(t=>t.readyState!=='ended');}
+  function updateCameraControls(){
+    const open=$('scene-camera-open'),close=$('scene-camera-close'),status=$('scene-camera-status'),preview=$('scene-camera-preview');
+    const recording=busy&&capture?.options?.video;
+    if(open)open.disabled=busy||camera.status==='requesting'||cameraLive();
+    if(close)close.disabled=!(camera.status==='requesting'||cameraLive()||recording);
+    if(status)status.textContent=cameraError|| (recording?(capture.status==='requesting'?'等待麦克风授权':capture.status==='stopping'||capture.status==='idle'?'正在保存视频':'正在录制'):camera.status==='requesting'?'等待摄像头授权':cameraLive()?'摄像头预览中':'摄像头已关闭');
+    if(preview&&!cameraLive()&&!recording){preview.pause();preview.srcObject=null;}
+    for(const [id,mode] of [['scene-choice-audio','audio'],['scene-choice-video','video']])$(id)?.setAttribute('aria-pressed',String(captureMode===mode));
+  }
+  function detachPreview(){const preview=$('scene-camera-preview');if(preview){preview.pause();preview.srcObject=null;}}
+  function shutCamera(){camera.close();detachPreview();updateCameraControls();}
+  function attachPreview(){const preview=$('scene-camera-preview');if(!preview||!cameraLive())return;preview.srcObject=camera.stream;preview.muted=true;preview.defaultMuted=true;preview.playsInline=true;preview.play().catch(()=>{if(!preview.isConnected||preview.srcObject!==camera.stream||!cameraLive())return;closeCamera();cameraError='画面未能自动显示，已关闭采集。可重试或改为仅录音。';updateCameraControls();});}
+  async function openCamera(){
+    if(busy||captureMode!=='video'||camera.status!=='idle')return;
+    cameraError='';const index=state.index,session=state.sessionId,version=current().version;
+    try{const pending=camera.open({onEnded:()=>{if(busy&&capture?.options?.video)stopRecording();cameraError='摄像头连接中断，已关闭画面并取消待授权录像；可重试或切换为仅录音。';updateControls();}});updateControls();const stream=await pending;
+      if(!stream)return;
+      if(!active()||captureMode!=='video'||!state||state.sessionId!==session||state.index!==index||current().version!==version){shutCamera();return;}
+      attachPreview();updateControls();message('摄像头预览中，尚未采集麦克风或保存视频。调整位置后，听题并主动开始视频作答。');
+    }catch(error){shutCamera();const reasons={NotAllowedError:'摄像头权限未获允许。可在浏览器设置中授权，或切换为仅录音。',NotFoundError:'没有找到摄像头，可连接设备或切换为仅录音。',NotReadableError:'摄像头可能被其他应用占用，请关闭占用或切换为仅录音。'};cameraError=reasons[error.name]||error.message||'摄像头不可用，请切换为仅录音。';updateControls();message(cameraError,true);}
+  }
+  function closeCamera(){const done=busy&&capture?.options?.video?stopRecording('已结束视频采集，正在保留可用片段。'):Promise.resolve();cameraError='';shutCamera();updateControls();return done;}
+  async function changeCaptureMode(mode){
+    const token=++modeRequest;if(mode===captureMode)return;
+    const done=busy?stopRecording('正在结束当前录制并保留作答。'):Promise.resolve();shutCamera();await done;
+    if(token!==modeRequest)return;captureMode=mode;cameraError='';if(active())render();
+  }
+  function modeChoice(){const group=el('div','scene-capture-choices');group.setAttribute('role','group');group.setAttribute('aria-label','作答方式');for(const [mode,text] of [['audio','仅录音'],['video','视频模拟']]){const b=button(text,()=>changeCaptureMode(mode));b.id='scene-choice-'+mode;b.setAttribute('aria-pressed',String(captureMode===mode));group.append(b);}return group;}
+  function cameraPanel(){const panel=el('section','scene-camera-panel');add(panel,el('h3','','看见自己的表达'));const preview=el('video','scene-camera-preview');preview.id='scene-camera-preview';preview.muted=true;preview.defaultMuted=true;preview.playsInline=true;preview.autoplay=true;preview.srcObject=null;preview.setAttribute('muted','');preview.setAttribute('playsinline','');preview.setAttribute('aria-label','本人摄像头镜像预览，不自动录制');const status=el('p','scene-camera-status','摄像头已关闭');status.id='scene-camera-status';status.setAttribute('role','status');const open=button('开启摄像头',openCamera,'primary');open.id='scene-camera-open';const close=button('关闭摄像头',closeCamera);close.id='scene-camera-close';add(panel,preview,status,el('p','small muted','仅本机镜像预览。点击开始视频作答才录制声音与画面；停止后关闭设备。'),add(el('div','actions'),open,close),el('p','small muted','回看时观察目光、坐姿和手势；不进行人脸识别或神态评分。'));return panel;}
   function updateControls(){
     const rec=$('scene-record'),stop=$('scene-stop'),read=$('scene-read'),readStop=$('scene-read-stop'),asr=$('scene-auto');
-    if(rec)rec.disabled=busy||speaking;if(stop)stop.disabled=!busy;if(read)read.disabled=busy||speaking;if(readStop)readStop.disabled=!speaking;if(asr)asr.disabled=busy;
+    if(rec)rec.disabled=busy||speaking||(captureMode==='video'&&!cameraLive());if(stop)stop.disabled=!busy;if(read)read.disabled=busy||speaking;if(readStop)readStop.disabled=!speaking;if(asr)asr.disabled=busy;
     for(const id of ['scene-next','scene-skip','scene-review','scene-transcript','scene-confirm','scene-revise']){const n=$(id);if(n)n.disabled=busy||speaking;}
     const a=state?.status==='active'?current().a:null;
-    const status=busy?(capture?.status==='requesting'?'等待麦克风授权':capture?.status==='stopping'?'正在保存录音':'正在录音'):speaking?'正在朗读':a?.reviewed?'查看评分建议':a?.take?'回听核对':a?.transcript?'核对回答文字':'等待听题';
+    const status=busy?(capture?.status==='requesting'?'等待麦克风授权':capture?.status==='stopping'||capture?.status==='idle'?'正在保存作答':capture?.options?.video?'正在录制':'正在录音'):speaking?'正在朗读':a?.reviewed?'查看评分建议':a?.take?'回听核对':a?.transcript?'核对回答文字':'等待听题';
     const room=$('scene-room-status');if(room){room.textContent=status;room.setAttribute('data-state',busy?'recording':speaking?'speaking':a?.reviewed?'review':'idle');}
     const live=$('scene-live-status');if(live)live.textContent=busy?'录音进行中，请口头作答':speaking?'正在朗读题目，请听题':'准备好后，主动点击开始录音';
-    const meter=$('scene-meter');if(meter&&!busy)meter.value=0;
+    const meter=$('scene-meter');if(meter&&!busy)meter.value=0;updateCameraControls();
   }
-  function startRound(){if(busy)return;if(state&&!window.confirm('开始新一轮将替换最近一轮两版录音和文字，请先下载。确定继续？'))return;globalThis.AiUI.cancelPending();stopSpeaking();stopPlayback();const old=state;state=core.createSession(questions);invalidSaved=false;save();render();clearAudio(old);say('已抽取三个不同题型。点击朗读题目开始听题。');}
+  function startRound(){if(busy)return;if(state&&!window.confirm('开始新一轮将替换最近一轮两版录音和文字，请先下载。确定继续？'))return;globalThis.AiUI.cancelPending();stopSpeaking();stopPlayback();shutCamera();const old=state;state=core.createSession(questions);invalidSaved=false;save();render();clearAudio(old);say('已抽取三个不同题型。点击朗读题目开始听题。');}
   function speak(q){
     if(busy)return;stopPlayback();
     if(!globalThis.speechSynthesis||!globalThis.SpeechSynthesisUtterance){message('当前浏览器没有朗读功能。请展开题干，读题后继续录音。',true);$('scene-prompt-details').open=true;return;}
@@ -2356,36 +2411,37 @@ textarea::placeholder{color:#6c7b93}
   }
   async function beginRecording(){
     if(busy||speaking||!state||state.status!=='active')return;
+    const recordVideo=captureMode==='video';if(recordVideo&&!cameraLive()){message('请先开启摄像头，或切换为仅录音。',true);return;}
     const {version,a}=current(),index=state.index,id=state.ids[index],old=a.take,sessionId=state.sessionId;
     if((old||a.transcript.trim())&&!window.confirm('重新录音成功后只替换'+label(version)+'，并清空此版本文字和点评。另一版本会保留。需要时请先下载，确定重录？'))return;
     stopSpeaking();stopPlayback();busy=true;capture=new globalThis.SpeechCapture();const thisCapture=capture;updateControls();
-    try{const started=await capture.start({transcribe:autoTranscribe,
+    try{const started=await capture.start({video:recordVideo,previewStream:recordVideo?camera.stream:null,transcribe:autoTranscribe,
       onTick:(duration,rms)=>{const timer=$('scene-record-timer');if(timer)timer.textContent=format(duration);const meter=$('scene-meter');if(meter)meter.value=Math.min(1,rms*7);},
       onTranscript:text=>{const n=$('scene-live-transcript');if(n)n.textContent=text||'识别中……';},onNotice:text=>message(text,true),
-      onFinish:async result=>{
+      onFinish:result=>{finishPromise=(async()=>{
         if(capture!==thisCapture)return;
         if(!state||state.sessionId!==sessionId||state.index!==index||current().version!==version){busy=false;capture=null;updateControls();return;}
-        if(!result.blob.size){busy=false;capture=null;if(active())message('没有取得可回放的音频，旧版本未替换，请检查麦克风。',true);updateControls();return;}
+        if(!result.blob.size){busy=false;capture=null;if(recordVideo)shutCamera();if(active())message('没有取得可回放的'+(recordVideo?'视频':'录音')+'，旧版本未替换，请检查设备。',true);updateControls();return;}
         const takeId=sessionId+'-'+id+'-'+version+'-'+Date.now()+'-'+Math.floor(Math.random()*1e6);audioMemory.set(takeId,result.blob);
-        dispatch({type:'TAKE',version,take:{id:takeId,durationMs:result.durationMs,stats:core.audioStats(result.samples,result.durationMs)}});
+        dispatch({type:'TAKE',version,take:{id:takeId,kind:result.kind,mimeType:result.mimeType,durationMs:result.durationMs,stats:core.audioStats(result.samples,result.durationMs)}});
         if(result.transcript)dispatch({type:'TEXT',version,text:result.transcript});
-        if(active())render();let stored=true;try{await audioOp('put',takeId,result.blob);}catch(error){stored=false;}
+        if(recordVideo)shutCamera();if(active())render();let stored=true;try{await audioOp('put',takeId,result.blob);}catch(error){stored=false;}
         if(!referenced(takeId))removeAudio(takeId);if(old&&!referenced(old.id))removeAudio(old.id);
         if(capture===thisCapture){busy=false;capture=null;}updateControls();
         if(state?.sessionId!==sessionId||state.index!==index||current().version!==version)return;
-        if(active())message(result.error||(!stored?'录音可回放，但本机保存失败，刷新会丢失，请立即下载。':'录音已停止。先回听，再核对文字并生成点评。'),!stored||!!result.error);
-      }});
-      if(!started){if(capture===thisCapture){busy=false;capture=null;}updateControls();return;}if(capture===thisCapture){updateControls();message('正在录音。点击停止后回听；每段最多10分钟。');}
-    }catch(error){if(capture!==thisCapture)return;busy=false;capture=null;const reasons={NotAllowedError:'麦克风权限未获允许。请在浏览器地址栏或系统设置中允许麦克风，再重试。',NotFoundError:'没有找到麦克风，请连接设备或使用手机浏览器。',NotReadableError:'麦克风可能正被其他应用占用，请关闭占用后重试。',SecurityError:'当前网页不能使用麦克风，请在 HTTPS 地址或本机预览中打开。'};if(active())message(reasons[error.name]||error.message||'未能开始录音，请检查权限。',true);updateControls();}
+        if(active())message(result.error||(!stored?'作答媒体可回放，但本机保存失败，刷新会丢失，请立即下载。':recordVideo?'视频已停止并关闭设备。先回看，再核对文字并生成点评。':'录音已停止。先回听，再核对文字并生成点评。'),!stored||!!result.error);
+      })();return finishPromise;}});
+      if(!started){if(capture===thisCapture){busy=false;capture=null;}updateControls();return;}if(capture===thisCapture){updateControls();message(recordVideo?'正在录制声音与画面。点击停止后回看；每段最多10分钟。':'正在录音。点击停止后回听；每段最多10分钟。');}
+    }catch(error){if(capture!==thisCapture)return;busy=false;capture=null;if(recordVideo)shutCamera();const reasons={NotAllowedError:'麦克风权限未获允许。请在浏览器地址栏或系统设置中允许麦克风，再重试。',NotFoundError:'没有找到麦克风，请连接设备或使用手机浏览器。',NotReadableError:'麦克风可能正被其他应用占用，请关闭占用后重试。',SecurityError:'当前网页不能使用麦克风，请在 HTTPS 地址或本机预览中打开。'};if(active())message(reasons[error.name]||error.message||'未能开始录音，请检查权限。',true);updateControls();}
   }
-  function stopRecording(reason){if(!capture)return;const pending=capture.status==='requesting';capture.stop();if(pending){busy=false;capture=null;}updateControls();if(reason)message(reason);else if(pending)message('已取消等待麦克风授权。迟到的授权不会自动开始录音。');}
-  function leave(){stopSpeaking();stopPlayback();if(busy)stopRecording('已停止录音；返回后可回听或重新开始。');}
-  function next(skip){if(busy||speaking||!state||state.status!=='active'||performance.now()-lastNext<500)return;const {r}=current();if(skip&&!window.confirm('跳过本题并进入下一步？已有两版记录仍保留在回顾中。'))return;if(!skip&&![r.initial,r.revision].some(a=>a.take||a.transcript.trim())){message('请先录音或填写回答文字，也可以明确跳过本题。',true);return;}stopSpeaking();stopPlayback();lastNext=performance.now();dispatch({type:skip?'SKIP':'NEXT'});render();focus();}
-  function revise(){if(busy||speaking)return;stopPlayback();const old=state;dispatch({type:'REVISE'});if(state===old)return;render();$('scene-transcript').focus();message('首次回答已锁定并保留。按建议重新组织，再主动点击开始录音。');}
+  function stopRecording(reason){if(!capture)return Promise.resolve();const currentCapture=capture,pending=currentCapture.status==='requesting',done=currentCapture.stop();if(pending){busy=false;capture=null;shutCamera();}updateControls();if(reason)message(reason);else if(pending)message('已取消等待设备授权，迟到的授权不会自动开始采集。');return Promise.resolve(done).then(()=>finishPromise);}
+  function leave(){modeRequest++;stopSpeaking();stopPlayback();if(busy)stopRecording('已停止采集；返回后可回看或重新开始。');shutCamera();}
+  function next(skip){if(busy||speaking||!state||state.status!=='active'||performance.now()-lastNext<500)return;const {r}=current();if(skip&&!window.confirm('跳过本题并进入下一步？已有两版记录仍保留在回顾中。'))return;if(!skip&&![r.initial,r.revision].some(a=>a.take||a.transcript.trim())){message('请先录音或填写回答文字，也可以明确跳过本题。',true);return;}stopSpeaking();stopPlayback();shutCamera();lastNext=performance.now();dispatch({type:skip?'SKIP':'NEXT'});render();focus();}
+  function revise(){if(busy||speaking)return;stopPlayback();shutCamera();const old=state;dispatch({type:'REVISE'});if(state===old)return;render();$('scene-transcript').focus();message('首次回答已锁定并保留。按建议重新组织，再主动点击开始录音。');}
   function download(blob,name){const url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   function exportReport(){if(state)download(new Blob(['\ufeff'+core.reportText(state,questions,globalThis.TrainingCore.analyze)],{type:'text/plain;charset=utf-8'}),'上岸_现场两版练习回顾.txt');}
-  function audioExtension(blob){return /mp4|m4a/.test(blob.type)?'m4a':/ogg/.test(blob.type)?'ogg':'webm';}
-  async function audioPlayer(parent,take,caption,token){if(!take){parent.append(el('p','small muted','此版本尚无录音。'));return;}const hint=el('p','small muted','正在读取本机录音……');parent.append(hint);const blob=await readAudio(take.id);if(token!==renderId||!parent.isConnected)return;hint.remove();if(!blob){parent.append(note('此录音已无法从本机读取。文字和时长保留；可在当前作答版本重新录音。',true));return;}const url=URL.createObjectURL(blob);urls.push(url);const player=el('audio');player.controls=true;player.preload='metadata';player.src=url;player.setAttribute('aria-label',caption);player.id='audio-'+take.id+($('audio-'+take.id)?'-'+(++playerSerial):'');players.set(player,url);player.addEventListener('play',()=>{if(busy){player.pause();return;}stopSpeaking();document.querySelectorAll('#scene-workspace audio').forEach(a=>{if(a!==player)a.pause();});});const a=el('a','scene-download','下载'+caption+'录音');a.href=url;a.download='上岸_'+caption+'.'+audioExtension(blob);add(parent,player,a);}
+  function audioExtension(blob){return /mp4|m4a/.test(blob.type)?(/^video\//.test(blob.type)?'mp4':'m4a'):/ogg/.test(blob.type)?'ogg':'webm';}
+  async function audioPlayer(parent,take,caption,token){if(!take){parent.append(el('p','small muted','此版本尚无录音或视频。'));return;}const hint=el('p','small muted','正在读取本机录音……');parent.append(hint);const blob=await readAudio(take.id);if(token!==renderId||!parent.isConnected)return;hint.remove();if(!blob){parent.append(note('此录音已无法从本机读取。文字和时长保留；可在当前作答版本重新录音。',true));return;}const url=URL.createObjectURL(blob);urls.push(url);const video=take.kind==='video'||/^video\//i.test(blob.type),player=el(video?'video':'audio',video?'scene-recorded-video':'');player.playsInline=true;player.controls=true;player.preload='metadata';player.src=url;player.setAttribute('aria-label',caption);player.id='audio-'+take.id+($('audio-'+take.id)?'-'+(++playerSerial):'');players.set(player,url);player.addEventListener('play',()=>{if(busy){player.pause();return;}stopSpeaking();for(const other of players.keys())if(other!==player)other.pause();});const a=el('a','scene-download','下载'+caption+(video?'视频':'录音'));a.href=url;a.download='上岸_'+caption+'.'+audioExtension(blob);add(parent,player,a);if(video)parent.append(el('p','small muted','视频为正常方向回放。观察目光、坐姿、手势及重复动作，仅供自评，不自动评价神态或紧张程度。'));}
   function feedbackPanel(parent,a,q,includeAi=true){
     const f=core.feedback(a,q,globalThis.TrainingCore.analyze),grid=el('div','scene-feedback-grid');
     if(f.assessment){const card=globalThis.PracticeUI.assessmentCard({assessment:f.assessment},'规则辅助',false);card.setAttribute('aria-label','规则辅助练习分与整合评价');card.prepend?card.prepend(el('h3','','规则辅助练习分')):card.append(el('p','small muted','规则辅助练习分'));parent.append(card);const detail=el('details','scene-dimension-details');detail.append(el('summary','','查看四维原句依据与待补充内容'));f.assessment.dimensions.forEach(d=>{const source=globalThis.TrainingCore.analyze(a.transcript,q).dimensions.find(x=>x.id===d.id);detail.append(globalThis.PracticeUI.renderDimension(source,d));});parent.append(detail);}
@@ -2411,17 +2467,17 @@ textarea::placeholder{color:#6c7b93}
     for(const [x,fill] of [[228,'#7298e7'],[323,'#315fd6'],[418,'#809ed0']]){shape('rect',{x:x-32,y:105,width:64,height:60,rx:26,fill});shape('circle',{cx:x,cy:79,r:24,fill:'#ffd7b9'});shape('path',{d:`M${x-24} 76q0-35 27-27q23 0 21 29q-9-6-13-17q-15 16-35 15`,fill:'#344867'});shape('path',{d:`M${x-12} 110l12 15l12-15`,fill:'#fff'});shape('path',{d:`M${x} 125v24`,stroke:'#fff','stroke-width':4});}
     shape('rect',{x:134,y:150,width:390,height:20,rx:9,fill:'#3f6bda'});shape('path',{d:'M153 170h352v47H153z',fill:'#b4cdf6'});shape('path',{d:'M184 171v47m292-47v47',stroke:'#86a8e5','stroke-width':7});shape('rect',{x:295,y:137,width:57,height:14,rx:4,fill:'#fff'});shape('circle',{cx:77,cy:195,r:22,fill:'#c1ded3'});shape('path',{d:'M76 213v-42m0 25l-13-12m13 5l14-11',stroke:'#589d8a','stroke-width':4,'stroke-linecap':'round'});return svg;
   }
-  function introduction(area){add(area,el('div','question-tag','情境化口头训练 · 三题一轮'),el('h2','stage-heading','听清题目，把想法说出来。'),el('p','muted','语音提问配合考场情境画面，练习首次回答、回听修改与两版对照。无需连接AI即可完成。'),illustration());const list=el('ol','instructions');['主动点击朗读题目；可重播，也可展开文字题干。','首次录音作答，回听后填写并核对实际回答文字。','查看四维规则评分、整合评价和优先建议。','可按建议再答一次，保留两版录音、文字与分数对照；也可直接完成本题。'].forEach(t=>list.append(el('li','',t)));add(area,list,note('考官画面为情境示意。评分依据核对后的文字，非官方面试成绩；录音仅提供回听线索。每段最多10分钟。'),add(el('div','actions'),button('开始现场模拟',startRound,'primary')));if(invalidSaved)area.append(note('旧现场记录无法读取，其他模式不受影响。开始新一轮将建立新的现场记录。',true));}
+  function introduction(area){add(area,el('div','question-tag','情境化口头训练 · 三题一轮'),el('h2','stage-heading','听清题目，把想法说出来。'),el('p','muted','语音提问配合考场情境画面，练习首次回答、回听修改与两版对照。可选视频模拟观察自己的神态，无需连接AI即可完成。'),illustration());const list=el('ol','instructions');['主动点击朗读题目；可重播，也可展开文字题干。','首次录音作答，回听后填写并核对实际回答文字。','查看四维规则评分、整合评价和优先建议。','可按建议再答一次，保留两版录音、文字与分数对照；也可直接完成本题。'].forEach(t=>list.append(el('li','',t)));add(area,list,note('考官画面为情境示意。评分依据核对后的文字，非官方面试成绩；录音仅提供回听线索。每段最多10分钟。'),add(el('div','actions'),button('开始现场模拟',startRound,'primary')));if(invalidSaved)area.append(note('旧现场记录无法读取，其他模式不受影响。开始新一轮将建立新的现场记录。',true));}
   function editor(area,token){
     const {r,a,version,q}=current();add(area,el('div','question-tag','第 '+(state.index+1)+' / 3 题 · '+q.category+' · '+label(version)),el('h2','stage-heading',q.title));
-    const steps=el('ol','scene-flow');['听题','首次作答','反馈建议','可选修订','两版对照'].forEach((t,i)=>{const item=el('li',version==='revision'?(i===3?'active':''):i===1?'active':'',t);if(item.className)item.setAttribute('aria-current','step');steps.append(item);});area.append(steps);
+    const steps=el('ol','scene-flow');['听题','首次作答','反馈建议','可选修订','两版对照'].forEach((t,i)=>{const item=el('li',version==='revision'?(i===3?'active':''):i===1?'active':'',t);if(item.className)item.setAttribute('aria-current','step');steps.append(item);});area.append(steps,modeChoice());
     const room=el('section','scene-room scene-room-v2');add(room,illustration());const caption=el('div','scene-room-caption'),status=el('span','scene-room-status','等待听题');status.id='scene-room-status';status.setAttribute('role','status');add(caption,el('span','scene-room-kicker','模拟考场 · 第 '+(state.index+1)+' 题'),status);add(room,caption,el('p','small muted','情境示意 · 系统语音提问，由你主动开始录音'));
-    const read=button('朗读题目',()=>speak(q),'primary');read.id='scene-read';const stopRead=button('停止朗读',stopSpeaking);stopRead.id='scene-read-stop';add(room,add(el('div','actions'),read,stopRead));const details=el('details','scene-question');details.id='scene-prompt-details';add(details,el('summary','','展开文字题干 / 无法听题时使用'),el('p','question-prompt',q.prompt));add(area,room,details);
+    const read=button('朗读题目',()=>speak(q),'primary');read.id='scene-read';const stopRead=button('停止朗读',stopSpeaking);stopRead.id='scene-read-stop';add(room,add(el('div','actions'),read,stopRead));const details=el('details','scene-question');details.id='scene-prompt-details';add(details,el('summary','','展开文字题干 / 无法听题时使用'),el('p','question-prompt',q.prompt));const sceneLayout=el('div',captureMode==='video'?'scene-camera-layout':'');sceneLayout.append(room);if(captureMode==='video')sceneLayout.append(cameraPanel());add(area,sceneLayout,details);attachPreview();
     if(version==='revision'){const first=el('details','scene-first-review');add(first,el('summary','','查看已保留的首次回答与建议'),el('div','answer-box',r.initial.transcript));audioPlayer(first,r.initial.take,'第'+(state.index+1)+'题_首次回答',token);feedbackPanel(first,r.initial,q,false);area.append(first);}
-    const recording=el('section','scene-step');add(recording,el('h3','','1 · '+label(version)+'：口头录音'));const live=el('p','small muted');live.id='scene-live-status';live.setAttribute('role','status');const timer=el('strong','scene-timer',a.take?format(a.take.durationMs):'00:00');timer.id='scene-record-timer';const meter=el('meter','scene-meter');meter.id='scene-meter';meter.min=0;meter.max=1;meter.value=0;meter.setAttribute('aria-label','当前麦克风音量活动');add(recording,add(el('div','scene-record-meta'),timer,meter),live);
+    const recording=el('section','scene-step');add(recording,el('h3','','1 · '+label(version)+(captureMode==='video'?'：视频作答':'：口头录音')));const live=el('p','small muted');live.id='scene-live-status';live.setAttribute('role','status');const timer=el('strong','scene-timer',a.take?format(a.take.durationMs):'00:00');timer.id='scene-record-timer';const meter=el('meter','scene-meter');meter.id='scene-meter';meter.min=0;meter.max=1;meter.value=0;meter.setAttribute('aria-label','当前麦克风音量活动');add(recording,add(el('div','scene-record-meta'),timer,meter),live);
     const check=el('input');check.type='checkbox';check.id='scene-auto';check.checked=autoTranscribe;check.addEventListener('change',()=>autoTranscribe=check.checked);add(recording,add(el('label','scene-check'),check,el('span','','尝试浏览器自动转写（可选）')),el('p','small muted','默认关闭。开启后可能向浏览器识别服务发送语音；需要网络且未必可用，失败不影响录音。'));
-    const record=button(a.take?'重新录制'+label(version):'开始录音',beginRecording,'primary');record.id='scene-record';const stop=button('停止录音',()=>stopRecording());stop.id='scene-stop';add(recording,add(el('div','actions'),record,stop));const interim=el('p','scene-interim small muted');interim.id='scene-live-transcript';add(recording,interim);area.append(recording);
-    const playback=el('section','scene-step');add(playback,el('h3','','2 · 回听'+label(version)));audioPlayer(playback,a.take,'第'+(state.index+1)+'题_'+label(version),token);add(playback,el('p','small muted','留意观点是否清楚、步骤是否衔接，以及重复与停顿的位置。'));area.append(playback);
+    const record=button(a.take?'重新录制'+label(version):captureMode==='video'?'开始视频作答':'开始录音',beginRecording,'primary');record.id='scene-record';const stop=button(captureMode==='video'?'停止录制':'停止录音',()=>stopRecording());stop.id='scene-stop';add(recording,add(el('div','actions'),record,stop));const interim=el('p','scene-interim small muted');interim.id='scene-live-transcript';add(recording,interim);area.append(recording);
+    const playback=el('section','scene-step');add(playback,el('h3','','2 · '+(a.take?.kind==='video'?'回看':'回听')+label(version)));audioPlayer(playback,a.take,'第'+(state.index+1)+'题_'+label(version),token);add(playback,el('p','small muted','留意观点是否清楚、步骤是否衔接，以及重复与停顿的位置。'));area.append(playback);
     const text=el('section','scene-step');add(text,el('h3','','3 · 核对文字，查看规则评分'));const textLabel=el('label','answer-label','实际说出的回答文字');textLabel.htmlFor='scene-transcript';const input=el('textarea');input.id='scene-transcript';input.maxLength=8000;input.value=a.transcript;input.placeholder='回听后填写实际说出的内容；自动转写不可用时可手动填写或使用设备键盘语音输入。';const verified=el('input');verified.type='checkbox';verified.id='scene-confirm';verified.checked=a.confirmed;const feedbackArea=el('div');feedbackArea.id='scene-feedback';const comparisonArea=el('div');comparisonArea.id='scene-comparison-area';const revisionActions=el('div','actions');revisionActions.id='scene-revision-actions';
     function show(){releasePlayers(comparisonArea);feedbackArea.replaceChildren();comparisonArea.replaceChildren();revisionActions.replaceChildren();const now=current();if(now.a.reviewed)feedbackPanel(feedbackArea,now.a,q);if(now.version==='initial'&&now.a.reviewed&&now.a.confirmed){const b=button('按建议再答一次',revise,'primary');b.id='scene-revise';revisionActions.append(b);}if(now.version==='revision'&&now.a.reviewed)comparisonPanel(comparisonArea,now.r,q,token);updateControls();}
     input.addEventListener('input',()=>{dispatch({type:'TEXT',text:input.value});verified.checked=false;show();});verified.addEventListener('change',()=>{dispatch({type:'CONFIRM',value:verified.checked});show();});const review=button('生成本题点评',()=>{if(busy||speaking)return;dispatch({type:'REVIEW'});show();feedbackArea.scrollIntoView({block:'start'});},'primary');review.id='scene-review';add(text,textLabel,input,add(el('label','scene-check'),verified,el('span','','我已核对：以上文字与实际回答一致。')),add(el('div','actions'),review));add(area,text,feedbackArea,revisionActions,comparisonArea);show();
@@ -2429,8 +2485,8 @@ textarea::placeholder{color:#6c7b93}
   }
   function report(area,token){add(area,el('h2','stage-heading','本轮口头练习回顾'),note('每题首次与修订记录分别保留。规则分只依据核对文字，录音不作真实口语能力或官方成绩评价。'));state.ids.forEach((id,i)=>{const q=questions.find(q=>q.id===id),r=state.records[id],details=el('details','mock-result');add(details,el('summary','','第'+(i+1)+'题 · '+q.title+(r.skipped?' · 已跳过':'')),el('p','question-prompt',q.prompt));for(const version of ['initial','revision']){const a=r[version],section=el('section','scene-report-attempt');add(section,el('h3','',label(version)),el('div','answer-box',a.transcript||'尚无文字'),el('p','small muted',a.confirmed?'文字已核对':'文字未核对'));audioPlayer(section,a.take,'第'+(i+1)+'题_'+label(version),token);feedbackPanel(section,a,q,false);details.append(section);}if(r.activeVersion==='revision')comparisonPanel(details,r,q,token);area.append(details);});add(area,add(el('div','actions'),button('下载本轮回顾',exportReport,'primary'),button('开始新一轮',startRound)));}
   function focus(){requestAnimationFrame(()=>{$('scene-main').focus({preventScroll:true});$('scene-main').scrollIntoView({block:'start'});});}
-  function render(){stopPlayback();revokeUrls();const token=++renderId,area=$('scene-content');area.replaceChildren();$('scene-progress').textContent=state?(state.status==='complete'?'本轮已完成 · 3 / 3':'第 '+(state.index+1)+' / 3 题'):'尚未开始';if(!state)introduction(area);else if(state.status==='complete')report(area,token);else editor(area,token);const msg=note('准备好后按步骤开始。');msg.id='scene-message';area.append(msg);save();updateControls();if(!globalThis.isSecureContext&&navigator.mediaDevices===undefined)message('麦克风需要 HTTPS 或 localhost，请打开正式网址使用录音。',true);}
-  $('clear-scene').addEventListener('click',()=>{if(busy){message('请先停止录音，再清空现场记录。',true);return;}if(!state&&!invalidSaved){say('当前没有现场记录可清空。');return;}if(!confirm('清空本轮两版文字、录音和回顾？其他训练模式会保留，请先下载需要的记录。'))return;globalThis.AiUI.cancelPending();stopSpeaking();stopPlayback();const old=state;state=null;invalidSaved=false;migrating=false;save();clearAudio(old);render();say('现场记录已清空，其他训练记录已保留。');});
+  function render(){stopPlayback();detachPreview();revokeUrls();const token=++renderId,area=$('scene-content');area.replaceChildren();$('scene-progress').textContent=state?(state.status==='complete'?'本轮已完成 · 3 / 3':'第 '+(state.index+1)+' / 3 题'):'尚未开始';if(!state)introduction(area);else if(state.status==='complete')report(area,token);else editor(area,token);const msg=note('准备好后按步骤开始。');msg.id='scene-message';area.append(msg);save();updateControls();if(!globalThis.isSecureContext&&navigator.mediaDevices===undefined)message('麦克风需要 HTTPS 或 localhost，请打开正式网址使用录音。',true);}
+  $('clear-scene').addEventListener('click',()=>{if(busy){message('请先停止录音，再清空现场记录。',true);return;}if(!state&&!invalidSaved){say('当前没有现场记录可清空。');return;}if(!confirm('清空本轮两版文字、录音和回顾？其他训练模式会保留，请先下载需要的记录。'))return;globalThis.AiUI.cancelPending();stopSpeaking();stopPlayback();shutCamera();const old=state;state=null;invalidSaved=false;migrating=false;save();clearAudio(old);render();say('现场记录已清空，其他训练记录已保留。');});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)leave();});window.addEventListener('pagehide',leave);window.addEventListener('beforeunload',event=>{if(busy){event.preventDefault();event.returnValue='';}});globalThis.SceneUI={enter:()=>{render();focus();},leave};render();if(active())focus();
 })();
 
