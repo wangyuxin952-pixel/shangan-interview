@@ -1456,7 +1456,14 @@ function build(legacy,seeds){
   const [title,scenario,a,at,b,bt]=s,base=original.find(q=>q.typeId===type),dimensions=JSON.parse(JSON.stringify(base.dimensions));
   const points=[a,b],terms=[at.split(','),bt.split(',')];
   dimensions.find(d=>d.id==='analysis').checks=points.map((label,i)=>({id:'situation-'+(i+1),label,terms:terms[i],suggestion:'针对“'+scenario+'”，请'+label+'，交代依据、对象及具体做法。',starter:'围绕'+title+'，我会先……，依据……再……。'}));
-  dimensions.forEach(d=>{d.checks.forEach(c=>{if(d.id!=='analysis')c.suggestion='针对“'+title+'”：'+c.suggestion;});if(d.id==='analysis')d.detail.patterns=[...terms.flat(),'因为|根据|对照|核实|比较|具体|通过|例如'];});
+  const people=dimensions.find(d=>d.id==='people'),role=dimensions.find(d=>d.id==='role');
+  function check(id,label,words,suggestion,starter){return {id,label,terms:words.split(','),suggestion:'针对“'+title+'”：'+suggestion,starter};}
+  if(type!=='motivation'){
+   people.checks=[check('listen',type==='communication'?'倾听对方并澄清分歧':'回应受影响对象的具体需要','倾听,听取,解释,回应,答疑,征求,了解诉求','在“'+a+'”过程中，明确受影响对象、要了解的问题，并举一句合适的解释或回应。','我会先向……了解……，再解释目前可以确认的……。'),check('follow','告知安排与后续跟进','告知,通知,指引,回访,跟进,咨询,反馈渠道','结合“'+b+'”，说明怎样告知安排、获得反馈，以及未解决事项如何跟进。','通过……告知……，由……在……之后跟进。')];
+   role.checks=[check('coordination','协作分工与责任交接','分工,协调,对接,负责人,责任人,请示,汇报,交接','说明实施“'+b+'”时你的具体责任、协作对象，哪些事项应请示确认。','我负责……，与……对接，由……确认……。'),check('boundaries','职责边界与信息保护','按规定,按流程,职责,权限,授权,个人信息,隐私,保密,公开透明,不承诺录用','围绕“'+title+'”指出与本题有关的权限、信息使用或承诺边界，避免超出协助人员职责。','在……范围内我会……；涉及……时先向……确认。')];
+   for(const d of [people,role]){d.detail.patterns=[d.id==='people'?'向.{1,12}(解释|告知|通知)|通过.{1,12}(反馈|通知|联系)|回访|我会说':'由.{1,12}负责|我负责.{2,}|向.{1,12}(汇报|请示)|按.{1,10}(流程|规定)|保护个人信息'];d.detail.suggestion='针对“'+title+'”，补充一项有对象、动作与安排的具体说明。';d.detail.starter='面对……，我负责……，通过……，交给……确认／跟进。';}
+  }
+  dimensions.forEach(d=>{d.checks.forEach(c=>{if(d.id!=='analysis'&&!c.suggestion.includes(title))c.suggestion='针对“'+title+'”：'+c.suggestion;});if(d.id==='analysis'){d.detail.patterns=[...terms.flat(),'因为|根据|对照|核实|比较|具体|通过|例如'];d.detail.suggestion='围绕“'+title+'”，说明“'+a+'”与“'+b+'”的依据，并补充一种具体做法或可核实的经历。';d.detail.starter='依据……，我会先……，通过……核实／比较，再……。';}});
   const task=type==='analysis'?'请谈谈你对这一现象的看法，并从公共就业服务角度提出可行建议。':type==='motivation'?'请作答，可使用真实课程、小组、社团或生活经历；没有相关经历时可以坦诚说明，再给出学习计划，不要编造工作经验。':'你是公共就业服务部门新入职的协助工作人员。你会如何开展工作？请说明处理步骤、沟通安排及职责边界。';
   all.push({id:type+'-'+String(index+1).padStart(3,'0'),typeId:type,title,shortTitle:title,category:labels[type]+' · 公共就业服务',prompt:scenario+'。'+task,goals:[a,b,'以具体证据、服务对象需要和职责边界组织回答'],guidance:['先想一个具体问题：在“'+title+'”中，'+a+'需要哪些信息或真实证据？',b+'时，你会具体向谁做什么、说明什么？','如何检查结果并跟进？哪些内容需要核实、授权或请示？'],contextTerms:[title,...terms.flat()],dimensions,referencePoints:[a,b,'说明服务对象的需要、协同分工和信息／承诺边界；自我认知题使用可核实的学生经历。'],sources:type==='motivation'?[typeSource]:[typeSource,sceneSource],provenance:'原创模拟情境，公开资料仅提供题型与服务主题参考，非官方真题或案例原题。'});
  }));return all;
